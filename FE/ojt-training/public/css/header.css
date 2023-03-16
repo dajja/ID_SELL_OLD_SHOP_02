@@ -1,0 +1,36 @@
+.header {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.header-3 {
+    display: flex;
+    font-weight: 600;
+}
+
+.header-3-item {
+    flex: 1;
+}
+.header-3-item h2 {
+    font-family: 'Roboto', sans-serif;
+}
+.header-3a,
+.header-3b,
+.header-3c {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.header-3a {
+    margin-left: 10px;
+}
+
+.header-3b {
+    justify-content: center;
+}
+
+.header-3c {
+    justify-content: end;
+    margin-right: 10px;
+}

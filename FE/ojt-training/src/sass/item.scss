@@ -1,0 +1,31 @@
+.item {
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    .item-img {
+        img {
+            width: 100%;
+        }
+    }
+    .item-bonus {
+        font-size: 12px;
+        top: 35px;
+        left: 35px;
+        position: absolute;
+        font-weight: 600;
+    }
+    .item-description {
+        font-size: 14px;
+        text-align: start;
+        padding: 10px 0;
+        font-weight: 700;
+    }
+    .item-money {
+        display: flex;
+        font-size: 14px;
+        gap: 10%;
+        .item-sale {
+            color: rgb(252, 153, 61);
+        }
+    }
+}
