@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Catalog from "./components/Catalog";
 import Detail from "./components/Detail";
 
+
 function App() {
   return (
     <BrowserRouter>

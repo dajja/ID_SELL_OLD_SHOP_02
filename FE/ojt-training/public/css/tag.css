@@ -1,0 +1,13 @@
+.tag {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tag-item {
+    padding: 8px;
+    background-color: rgb(239, 237, 237);
+    color: #f2740d;
+}

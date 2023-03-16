@@ -33,37 +33,6 @@
         .catalog-list-grid {
             display: grid;
             grid-template-columns: auto auto auto auto;
-            .catalog-item {
-                padding: 20px;
-                font-family: 'Roboto', sans-serif;
-                position: relative;
-                .ctl-item-img {
-                    img {
-                        width: 100%;
-                    }
-                }
-                .ctl-item-bonus {
-                    font-size: 12px;
-                    top: 35px;
-                    left: 35px;
-                    position: absolute;
-                    font-weight: 600;
-                }
-                .ctl-item-description {
-                    font-size: 13px;
-                    text-align: start;
-                    padding: 10px 0;
-                    font-weight: 700;
-                }
-                .clt-item-money {
-                    display: flex;
-                    font-size: 13px;
-                    gap: 10%;
-                    .ctl-item-sale {
-                        color: rgb(252, 153, 61);
-                    }
-                }
-            }
         }
     }
     .catalog-btn {
@@ -84,18 +53,6 @@
         height: 1px;
         background-color: rgb(190, 186, 186);
         margin-top: 30px;
-    }
-    .catalog-tag {
-        padding: 40px 0;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        .clt-tag-item {
-            padding: 8px;
-            background-color: rgb(239, 237, 237);
-            color: #f2740d;
-        }
     }
 }
 
