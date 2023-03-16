@@ -11,7 +11,7 @@ function Item(props) {
                 <div className="item-description">{props.description}</div>
                 <div className="item-money">
                     <div className="item-price">${props.price}</div>
-                    <div className="item-sale">${props.sale}</div>
+                    <div className="item-sale">{props.sale}</div>
                 </div>
             </div>
         </>

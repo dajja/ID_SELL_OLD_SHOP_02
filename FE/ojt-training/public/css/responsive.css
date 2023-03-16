@@ -213,4 +213,23 @@
         display: none !important;
     }
     /* Detail */
+
+    /* Checkout */
+    .checkout-content, .ck-form-user, .ck-form-billing-2-2, .ck-form-billing-2-2-2, .ck-form-method, .ck-cart-access {
+        flex-wrap: wrap !important;
+    }
+    input[type=text] {
+        margin: 10px 0 !important;
+    }
+    select {
+        margin: 10px 0 !important;
+    }
+    .ck-cart-access button {
+        display: flex;
+        margin: 0 auto;
+        padding: 10px 15px;
+        margin-top: 10px;
+    }
+    /* Checkout */
+
 }

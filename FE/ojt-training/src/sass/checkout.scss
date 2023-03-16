@@ -1,0 +1,340 @@
+.checkout-container {
+    max-width: 100%;
+    box-sizing: border-box;
+
+    .checkout-content {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        width: 100%;
+        gap: 5%;
+
+        .checkout-cart {
+            width: 35%;
+
+            .ck-cart-title {
+                padding-bottom: 25px;
+            }
+
+            .ck-cart-item {
+                padding: 5px 0;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+
+                .item {
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+                    padding-left: 0px !important;
+                    padding-bottom: 5px !important;
+
+                    .item-img {
+                        width: 40%;
+                    }
+
+                    .item-description {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .item-money {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+
+                .ck-cart-edit {
+                    justify-content: flex-end;
+                    display: flex;
+
+                    a {
+                        color: black;
+                    }
+                }
+            }
+
+            .ck-cart-shipping,
+            .ck-cart-subtotal,
+            .ck-cart-total {
+                display: flex;
+                padding: 20px 0;
+                border-bottom: 1px solid rgb(159, 158, 158);
+                justify-content: space-between;
+            }
+
+            .ck-cart-total {
+                font-weight: 700;
+            }
+
+            .ck-cart-code {
+                padding-top: 20px;
+            }
+        }
+
+        .checkout-form {
+            width: 60%;
+
+            .ck-form-user {
+                display: flex;
+                width: 100%;
+                gap: 2%;
+
+                .ck-form-user-email,
+                .ck-form-user-password {
+                    width: 40%;
+
+                    a {
+                        color: rgb(164, 162, 162);
+                        font-size: 13px;
+                    }
+                }
+
+                .ck-form-user-btn {
+                    width: 18%;
+                    display: flex;
+                    align-items: center;
+
+                    button {
+                        width: 100%;
+                        padding: 8px 0;
+                        background-color: black;
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+
+            }
+
+            .ck-form-billing {
+                .ck-form-billing-1 {
+                    width: 100%;
+                }
+
+                .ck-form-billing-2 {
+                    width: 100%;
+
+                    .ck-form-billing-2-2 {
+                        margin: 12px 0;
+                        width: 100%;
+                        display: flex;
+                        gap: 2%;
+
+                        div {
+                            width: 49%;
+
+                            select {
+                                width: 100%;
+                                margin-top: 5px;
+                                padding: 8px 0;
+                            }
+                        }
+
+                        .ck-form-billing-2-2-2 {
+                            display: flex;
+                            width: 49%;
+                            gap: 4%;
+
+                            div {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                .ck-form-billing-3 {
+                    display: flex;
+                    width: 100%;
+                    gap: 5%;
+
+                    div {
+                        gap: 10px;
+                        display: flex;
+
+                        input {
+                            width: 25px;
+                            height: 20px;
+                        }
+
+                        label {
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+
+            .ck-form-shipping {
+                .ck-form-billing-2 {
+                    width: 100%;
+
+                    .ck-form-billing-2-2 {
+                        margin: 12px 0;
+                        width: 100%;
+                        display: flex;
+                        gap: 2%;
+
+                        div {
+                            width: 49%;
+
+                            select {
+                                width: 100%;
+                                margin-top: 5px;
+                                padding: 8px 0;
+                            }
+                        }
+
+                        .ck-form-billing-2-2-2 {
+                            display: flex;
+                            width: 49%;
+                            gap: 4%;
+
+                            div {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .ck-form-method {
+                display: flex;
+                width: 100%;
+                gap: 4%;
+
+                .ck-form-method-1 {
+                    width: 48%;
+
+                    .ck-form-method-choose {
+                        padding: 20px 0;
+                        border-top: 2px solid rgb(153, 153, 153);
+
+                        .ck-form-method-divide {
+                            margin: 15px 0;
+                            width: 100%;
+                            height: 1px;
+                            background-color: rgb(203, 201, 201);
+                        }
+
+                        .ck-form-method-choose-1 {
+                            display: flex;
+                            gap: 10px;
+
+                            input {
+                                width: 18px;
+                                height: 15px;
+                            }
+                        }
+                    }
+
+                    .ck-form-method-effort {
+                        width: 100%;
+
+                        .ck-form-method-eI {
+                            display: flex;
+                            gap: 10px;
+                            line-height: 24px;
+                        }
+                    }
+                }
+
+                .ck-form-method-2 {
+                    width: 48%;
+
+                    .ck-form-method-choose {
+                        padding: 20px 0;
+                        border-top: 2px solid rgb(153, 153, 153);
+
+                        .ck-form-method-divide {
+                            margin: 15px 0;
+                            width: 100%;
+                            height: 1px;
+                            background-color: rgb(203, 201, 201);
+                        }
+
+                        .ck-form-method-choose-2 {
+                            display: flex;
+                            gap: 10px;
+
+                            input {
+                                width: 18px;
+                                height: 15px;
+                            }
+
+                            label {
+                                .ck-form-paypal {
+                                    margin-top: 10px;
+
+                                    .ck-form-pp1 {
+                                        display: flex;
+                                        gap: 20px;
+
+                                        img {
+                                            width: 40%;
+                                            padding: 10px;
+                                            border: 1px solid rgb(203, 201, 201);
+                                        }
+
+                                        a {
+                                            display: flex;
+                                            align-items: center;
+                                            color: black;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .ck-form-method-payment {
+                        width: 100%;
+                        padding-top: 20px;
+                        border-top: 2px solid black;
+
+                        .ck-cart-payment {
+                            display: flex;
+                            justify-content: space-between;
+                            font-weight: 700;
+                        }
+
+                        .ck-cart-access {
+                            margin-top: 20px;
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+
+                            .ck-cart-access1 {
+                                display: flex;
+                                width: 60%;
+                                gap: 2%;
+                            }
+                            button {
+                                padding: 8px 15px;
+                                background-color: black;
+                                color: white;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ck-cart-title,
+.ck-form-title {
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+label {
+    color: rgb(164, 162, 162);
+    font-size: 13px;
+}
+
+input[type=text] {
+    margin-top: 5px;
+    padding: 8px 0;
+    width: 100%;
+}

@@ -5,6 +5,7 @@ import Homepage from "./components/Homepage";
 import Register from "./components/Register";
 import Catalog from "./components/Catalog";
 import Detail from "./components/Detail";
+import Checkout from "./components/Checkout";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/1" element={<Catalog />} />
         <Route path="/product" element={<Detail />} />
+        <Route path="/checkout" element={<Checkout/>}/>
       </Routes>
     </BrowserRouter>
   );
