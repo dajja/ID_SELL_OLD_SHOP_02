@@ -1,8 +1,39 @@
 import '../sass/homepage.scss';
 import Header from './Header';
 import Footer from './Footer';
+import Item from './Item';
 
 function Homepage() {
+    let listItem = [
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+    ]
     return (
         <>
             <div className="homepage-container">
@@ -47,54 +78,9 @@ function Homepage() {
                 </div>
                 <div className="homepage-product">
                     <div className="homepage-listItem">
-                        <div className="hp-item">
-                            <div className="hp-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="hp-item-bonus">Free shipping</div>
-                            <div className="hp-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus!
-                                Consequuntur, placeat repellat?</div>
-                            <div className="hp-item-money">
-                                <div className="hp-item-price">$26,40</div>
-                                <div className="hp-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="hp-item">
-                            <div className="hp-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="hp-item-bonus">Free shipping</div>
-                            <div className="hp-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus!
-                                Consequuntur, placeat repellat?</div>
-                            <div className="hp-item-money">
-                                <div className="hp-item-price">$26,40</div>
-                                <div className="hp-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="hp-item">
-                            <div className="hp-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="hp-item-bonus">Free shipping</div>
-                            <div className="hp-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus!
-                                Consequuntur, placeat repellat?</div>
-                            <div className="hp-item-money">
-                                <div className="hp-item-price">$26,40</div>
-                                <div className="hp-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="hp-item">
-                            <div className="hp-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="hp-item-bonus">Free shipping</div>
-                            <div className="hp-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus!
-                                Consequuntur, placeat repellat?</div>
-                            <div className="hp-item-money">
-                                <div className="hp-item-price">$26,40</div>
-                                <div className="hp-item-sale">$20</div>
-                            </div>
-                        </div>
+                        {listItem.map((item, i) => (
+                            <Item key={i} img={item.img} bonus={item.bonus} description={item.description} price={item.price} sale={item.sale}/>
+                        ))}
                     </div>
                 </div>
                 <div className="homepage-sale">

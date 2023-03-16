@@ -2,13 +2,54 @@ import '../sass/catalog.scss';
 import Header from './Header';
 import Footer from './Footer';
 import Breadcrumb from '../componentLittle/Breadcrumb';
+import Item from './Item';
 
 function Catalog() {
+    let tagData = [
+        'Sneakers', 'Running', 'Sport', 'Casual', 'Clothing', 'Adidas'
+    ]
+    let listItem = [
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        },
+        {
+            img: <img src="./image/giay.webp" alt="" />,
+            bonus: 'Free shipping',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
+            price: 26,
+            sale: 20,
+        }
+    ]
     return (
         <>
             <div className="catalog-container">
-                <Header/>
-                <Breadcrumb/>
+                <Header />
+                <Breadcrumb />
                 <div className="catalog-filter pad-15-20 col-8">
                     <div className="catalog-filter-1 col-6">
                         <p className="catalog-filter-p">View: </p>
@@ -33,87 +74,23 @@ function Catalog() {
                 </div>
                 <div className="catalog-listItem pad-15-20">
                     <div className="catalog-list-grid">
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price">$26,40</div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price"><del>$26,40</del></div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price">$26,40</div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price">$26,40</div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price">$26,40</div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
-                        <div className="catalog-item">
-                            <div className="ctl-item-img">
-                                <img src="./image/giay.webp" alt="" />
-                            </div>
-                            <div className="ctl-item-bonus">Free shipping</div>
-                            <div className="ctl-item-description">Lorem isicing elit. Nulla numquam modi, consectetur sit minus! Consequuntur, placeat repellat?</div>
-                            <div className="clt-item-money">
-                                <div className="ctl-item-price">$26,40</div>
-                                <div className="ctl-item-sale">$20</div>
-                            </div>
-                        </div>
+                        {listItem.map((item, i) => (
+                            <Item key={i} img={item.img} bonus={item.bonus} description={item.description} price={item.price} sale={item.sale} />
+                        ))}
                     </div>
                 </div>
                 <div className="catalog-btn">
                     <button>Load More</button>
                 </div>
                 <div className="ctl-divide" />
-                <div className="catalog-tag col-10">
-                    <div className="clt-tag-item">Sneakers</div>
-                    <div className="clt-tag-item">Running</div>
-                    <div className="clt-tag-item">Sport</div>
-                    <div className="clt-tag-item">Casual</div>
-                    <div className="clt-tag-item">Clothing</div>
-                    <div className="clt-tag-item">Adidas</div>
+                <div className="tag col-10">
+                    {tagData.map((item, i) => {
+                        return (
+                            <div className="tag-item">{item}</div>
+                        )
+                    })}
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )
