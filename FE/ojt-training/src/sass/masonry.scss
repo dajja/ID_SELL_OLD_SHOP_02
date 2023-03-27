@@ -1,0 +1,22 @@
+.homepage-news-item {
+    width: max-content ;
+    margin-bottom: 2%;
+    position: relative;
+    z-index: 1;
+    .homepage-news-item:nth-child(3n+1) {
+        order: 1;
+    }
+    .homepage-news-item:nth-child(3n+2) {
+        order: 2;
+    }
+    .homepage-news-item:nth-child(3n) {
+        order: 3;
+    }
+    .hp-newsItem-inform {
+        position: absolute;
+        bottom: 15px;
+        left: 11px;
+        z-index: 2;
+        color: white;
+    }
+}

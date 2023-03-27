@@ -38,7 +38,7 @@ export default function Footer() {
                                     <img src="./image/Visa_Inc._logo.svg.png" alt="" />
                                 </div>
                                 <div>
-                                    <img src="./image/MasterCard_Logo.svg.png" alt="" />
+                                    <img src="./image/mastercard.svg.png" alt="" />
                                 </div>
                                 <div>
                                     <img src="./image/PayPal.svg.png" alt="" />

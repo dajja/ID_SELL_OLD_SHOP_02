@@ -6,7 +6,7 @@ function Breadcrumb() {
                 <p>Home</p>
                 <div><i className="fa-solid fa-chevron-right" /></div>
                 <div>
-                    <p className="breadcrumbs-location">Men</p>
+                    <p className="breadcrumbs-location">...</p>
                 </div>
             </div>
         </>

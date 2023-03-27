@@ -4,7 +4,20 @@ import Footer from './Footer';
 import Header from './Header';
 import Item from './Item';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 function Detail() {
+    let products = useSelector((state) => state.products)
+    let dispatch = useDispatch();
+    let {id} = useParams();
+    useEffect(() => {
+        fetch("http://localhost:8000/products")
+            .then((res) => res.json())
+            .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
+            .catch((error) => console.log(error));
+    }, [dispatch])
     let tagData = [
         'Sneakers', 'Running', 'Trainers', 'Outdoor and active wear'
     ]
@@ -122,9 +135,10 @@ function Detail() {
                     <div className='related-product'>
                         <div className='related-arrow1 col-1'><i class="fa-solid fa-chevron-left"></i></div>
                         <div className='related-listItem col-10'>
-                            {listItem.map((item, i) => (
-                                <Item key={i} img={item.img} bonus={item.bonus} description={item.description} price={item.price} sale={item.sale}/>
-                            ))}
+                            {/* {products.length > 0 && products.map((item, i) => (
+                                <Item key={i} element={item}/>
+                            ))} */}
+                            <div>product : {id}</div>
                         </div>
                         <div className='related-arrow2 col-1'><i class="fa-solid fa-chevron-right"></i></div>
                     </div>

@@ -1,11 +1,13 @@
 .footer {
-    max-width: 80%;
-    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    background-color: #F5F5F5;
 }
 .footer-information {
-    width: 100%;
-    padding: 60px 25px 25px 25px;
+    max-width: 100%;
     line-height: 35px;
+    margin: 0 auto;
 }
 .footer-3 {
     display: flex;
@@ -41,7 +43,6 @@
 .footer-3c-1 {
     justify-content: center;
 }
-
 .fa-facebook,
 .fa-instagram,
 .fa-github,

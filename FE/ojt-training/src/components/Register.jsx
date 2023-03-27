@@ -1,7 +1,24 @@
 import '../sass/register.scss';
+import React, { useState, useEffect } from 'react';
+
 function Register() {
+    const [values, setValues] = useState({
+        email: '',
+        username: '',
+        password: '',
+        confirmpassword: '',
+    })
+    const [errors, setErrors] = useState("");
+    function handleInput(e) {
+        const newObj = {...values, [e.target.username]: e.target.value};
+        setValues(newObj);
+    }
+    function handleValidation(e) {
+        e.preventDefault();
+        
+    }
     return (
-        <>
+        <> 
             <div className="register-container">
                 <div className="register-content">
                     <div className="register-content-left col-10">
@@ -16,16 +33,16 @@ function Register() {
                                 <h3 className="form-h3">Register</h3>
                                 <div className="form-input">
                                     <label htmlFor="email">Email</label> <br />
-                                    <input type="text" name="email" placeholder="Email" /> <br />
+                                    <input type="text" name="email" placeholder="Email" onChange={handleInput}/> <br />
                                     <label htmlFor="username">Name</label> <br />
-                                    <input type="text" name="username" placeholder="username" /> <br />
+                                    <input type="text" name="username" placeholder="username" onChange={handleInput}/> <br />
                                     <label htmlFor="password">Password</label> <br />
-                                    <input type="text" name="password" placeholder="password" />
+                                    <input type="text" name="password" placeholder="password" onChange={handleInput}/>
                                     <i className="fa-solid fa-eye" /> <br />
                                     <label htmlFor="cfpassword">Confirm password</label> <br />
-                                    <input type="text" name="cfpassword" placeholder="confirm password" />
+                                    <input type="text" name="cfpassword" placeholder="confirm password" onChange={handleInput}/>
                                     <i className="fa-solid fa-eye" /> <br />
-                                    <button className="form-btn"><a href="/"> Register</a></button>
+                                    <button className="form-btn">Register</button> 
                                     <p>Da co tai khoan ? <a href="/">Dang nhap</a></p>
                                 </div>
                             </form>

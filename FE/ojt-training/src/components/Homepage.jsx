@@ -2,42 +2,52 @@ import '../sass/homepage.scss';
 import Header from './Header';
 import Footer from './Footer';
 import Item from './Item';
+import MasonryItem from './MasonryItem';
+
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Homepage() {
-    let listItem = [
+    let products = useSelector((state) => state.products)
+    let dispatch = useDispatch();
+    useEffect(() => {
+        fetch("http://localhost:8000/products")
+            .then((res) => res.json())
+            .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
+            .catch((error) => console.log(error));
+    }, [dispatch])
+    let newsMasonry = [
         {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
+            image: <img src="./image/new1.jpg" alt="" />,
+            name: 'Zunairah Richardson',
+            message: 'The difference',
         },
         {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
+            image: <img src="./image/new2.jpg" alt="" />,
+            name: 'Nela Combs',
+            message: 'The important',
         },
         {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
+            image: <img src="./image/new3.jpg" alt="" />,
+            name: 'Kieran Mcconnell',
+            message: `It's hard`,
         },
         {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
+            image: <img src="./image/new4.jpg" alt="" />,
+            name: 'Merryn Medure',
+            message: `I didn't `,
+        },
+        {
+            image: <img src="./image/new5.jpg" alt="" />,
+            name: 'Malak Mac',
+            message: 'Vanity is',
         },
     ]
     return (
         <>
             <div className="homepage-container">
-                <Header/>
+                <Header />
                 <div className="homepage-slide">
                     <img className="homepage-slide-img" src="./image/hero.png" alt="" />
                 </div>
@@ -78,8 +88,8 @@ function Homepage() {
                 </div>
                 <div className="homepage-product">
                     <div className="homepage-listItem">
-                        {listItem.map((item, i) => (
-                            <Item key={i} img={item.img} bonus={item.bonus} description={item.description} price={item.price} sale={item.sale}/>
+                        {products.length > 0 && products.map((item, i) => (
+                            <Item key={i} element={item} />
                         ))}
                     </div>
                 </div>
@@ -95,7 +105,18 @@ function Homepage() {
                     </div>
                 </div>
                 <div className="homepage-news">
-                    <img src="./image/news.jpg" alt="" />
+                    <div className='homepage-newss'>
+                        <div className='homepage-listItem-news'>
+                            <div className='homepage-news-title'>
+                                <div>
+                                    <p> 2020 </p>  <h3> Recent </h3> <h3> looks </h3> <a href="/" > Discover now </a>
+                                </div>
+                            </div>
+                            {newsMasonry.map((item, i) => (
+                                <MasonryItem key={i} image={item.image} name={item.name} message={item.message}/>
+                            ))}
+                        </div>
+                    </div>
                 </div>
                 <div className="homepage-subcribe">
                     <div className="homepage-subcribe-form col-10">
@@ -142,7 +163,7 @@ function Homepage() {
                     </div>
                     <div className="hp-instagram-arrow"><i className="fa-solid fa-chevron-up" /></div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )

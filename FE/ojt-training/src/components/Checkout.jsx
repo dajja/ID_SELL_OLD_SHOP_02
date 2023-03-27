@@ -4,19 +4,19 @@ import Footer from "./Footer";
 import Item from "./Item";
 import '../sass/checkout.scss';
 
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 function Checkout() {
-    let buyedItem = [
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
-            price: 25,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
-            price: 25,
-        },
-    ]
+    let cart = useSelector((state) => state.cart)
+    let dispatch = useDispatch();
+    useEffect(() => {
+        fetch("http://localhost:8000/products")
+            .then((res) => res.json())
+            .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
+            .catch((error) => console.log(error));
+    }, [dispatch])
+    console.log(cart);
     return (
         <>
             <div className="checkout-container">
@@ -27,10 +27,32 @@ function Checkout() {
                         <div className="checkout-cart col-10">
                             <div className="ck-cart-title">Shopping cart</div>
                             <div className="ck-cart-item">
-                                {buyedItem.map((item, i) => (
-                                    <Item key={i} img={item.img} description={item.description} price={item.price} />
-                                ))}
-                                <div className="ck-cart-edit"> <a href="/"> Edit cart </a></div>
+                                {cart.map((item, i) => {
+                                    return (
+                                        <>
+                                            <div className="item" key={i}>
+                                                <div className="item-img">
+                                                    <img src={item.image} alt={item.name} />
+                                                </div>
+                                                <div className="item-description">{item.name}</div>
+                                                <div className="item-money">
+                                                    <div className="item-price">${item.price * item.number}</div> 
+                                                </div>
+                                                <div className="item-quantity">
+                                                    <div className="item-quantity-1">
+                                                        <button>-</button>
+                                                        <div className="item-amount">{item.number}</div>
+                                                        <button>+</button>
+                                                    </div>
+                                                    <div className="item-quantity-2">
+                                                        <button>Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+                                })}
+                                
                             </div>
                             <div className="ck-cart-shipping">
                                 <div>Shipping:</div>
