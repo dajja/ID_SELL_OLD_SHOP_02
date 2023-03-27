@@ -6,7 +6,8 @@ import Register from "./components/Register";
 import Catalog from "./components/Catalog";
 import Detail from "./components/Detail";
 import Checkout from "./components/Checkout";
-
+import About from "./components/About";
+import Account from "./components/Account";
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/1" element={<Catalog />} />
-        <Route path="/product" element={<Detail />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/product" element={<Detail />}>
+        </Route>
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/account" element={<Account/>}/>
       </Routes>
     </BrowserRouter>
   );

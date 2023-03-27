@@ -4,47 +4,23 @@ import Footer from './Footer';
 import Breadcrumb from '../componentLittle/Breadcrumb';
 import Item from './Item';
 
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+
 function Catalog() {
+    const [data, setData] = useState([]);
     let tagData = [
         'Sneakers', 'Running', 'Sport', 'Casual', 'Clothing', 'Adidas'
     ]
-    let listItem = [
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        }
-    ]
+    const fetchData = async () => {
+        await axios.get("http://localhost:8000/product")
+            .then((response) => setData(response.data))
+            .catch((error) => console.log(error));
+    }
+    useEffect(() => {
+        fetchData();
+    }, [])
+
     return (
         <>
             <div className="catalog-container">
@@ -74,9 +50,9 @@ function Catalog() {
                 </div>
                 <div className="catalog-listItem pad-15-20">
                     <div className="catalog-list-grid">
-                        {listItem.map((item, i) => (
-                            <Item key={i} img={item.img} bonus={item.bonus} description={item.description} price={item.price} sale={item.sale} />
-                        ))}
+                        {data.map((item, i) => (
+                            <Item key={i} image={item.image} bonus={item.bonus} description={item.name} price={item.price} sale={item.sale} />
+                        ))} 
                     </div>
                 </div>
                 <div className="catalog-btn">

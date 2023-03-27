@@ -5,7 +5,7 @@
 .homepage-container {
     max-width: 100%;
     box-sizing: border-box;
-    padding: 30px 20px;
+    padding: 15px;
     .homepage-slide {
         max-width: 100%;
         position: relative;
@@ -36,7 +36,7 @@
                 .hp-fashion-description {
                     margin-top: 60px;
                 }
-                .hp-fs-description-grid {
+                .hp-fs-description-grid {   
                     display: grid;
                     grid-template-columns: auto auto;
                     .hp-fs-description-grid-item1 {
@@ -93,8 +93,41 @@
     }
     .homepage-news {
         max-width: 100%;
-        img {
-            width: 100%;
+        font-family: 'Roboto Slab', serif;
+        .homepage-newss {
+            display: flex;
+            .homepage-listItem-news {
+                display: flex;
+                flex-flow: column wrap ;
+                height: 1100px;
+                // flex-basis: 100%;
+                padding-left: 16%;
+                .homepage-news-title {
+                    margin-top: 100px;
+                    margin-bottom: 260px;
+                    p {
+                        font-size: 40px;
+                    }
+                    h3 {
+                        font-size: 40px;
+                    }
+                    a {
+                        font-size: 15px;
+                    }
+                }
+            }
+            .homepage-listItem-news::before {
+                content: "";
+                width: 0;
+                order: 2;
+                display: flex;
+            }
+            .homepage-listItem-news::after {
+                content: "";
+                width: 0;
+                order: 2;
+                display: flex;
+            }
         }
     }
     .homepage-subcribe {

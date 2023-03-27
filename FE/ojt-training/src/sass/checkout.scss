@@ -26,19 +26,52 @@
                     gap: 10px;
                     padding-left: 0px !important;
                     padding-bottom: 5px !important;
-
+                    height: auto !important;
                     .item-img {
-                        width: 40%;
+                        width: 50%;
+                        height: auto !important;
                     }
 
                     .item-description {
                         display: flex;
                         align-items: center;
+                        width: 100%;
                     }
 
                     .item-money {
                         display: flex;
                         align-items: center;
+                        font-size: 18px;
+                    }
+                    .item-quantity {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        .item-quantity-1 {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            justify-content: flex-end;
+                            gap: 10%;
+                            button {
+                                font-size: 35px;
+                                background-color: white;
+                                cursor: pointer;
+                                border: none;
+                            }
+                            .item-amount {
+                                font-size: 17px;
+                            }
+                        }
+                        .item-quantity-2 {
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
+                            button {
+                                font-size: 12px;
+                                padding: 4px 10px;
+                            }
+                        }
                     }
                 }
 
@@ -125,6 +158,9 @@
                                 width: 100%;
                                 margin-top: 5px;
                                 padding: 8px 0;
+                                select selected {
+                                    padding: 10px;
+                                }
                             }
                         }
 
@@ -333,7 +369,7 @@ label {
     font-size: 13px;
 }
 
-input[type=text] {
+.checkout-content  input[type=text] {
     margin-top: 5px;
     padding: 8px 0;
     width: 100%;

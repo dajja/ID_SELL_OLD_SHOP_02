@@ -33,6 +33,12 @@
         .catalog-list-grid {
             display: grid;
             grid-template-columns: auto auto auto auto;
+            .item {
+                height: 330px ;
+                .item-img {
+                    height: 85% ;
+                }
+            }
         }
     }
     .catalog-btn {

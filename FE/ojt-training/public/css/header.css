@@ -2,10 +2,12 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    background-color: #F5F5F5;
 }
 .header-3 {
     display: flex;
     font-weight: 600;
+    padding: 10px 0;
 }
 
 .header-3-item {
@@ -25,7 +27,10 @@
 .header-3a {
     margin-left: 10px;
 }
-
+.header-3a button {
+    padding: 0 5px;
+    cursor: pointer;
+}
 .header-3b {
     justify-content: center;
 }

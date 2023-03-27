@@ -1,0 +1,73 @@
+.about-container {
+    max-width: 100%;
+    box-sizing: border-box;
+    .about-content {
+        font-family: 'Roboto', sans-serif;
+        max-width: 100%;
+        margin: 40px 120px;
+        .abt-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            row-gap: 25px;
+            .abt-content-1, .abt-content-2 {
+                display: flex;
+                width: 100%;
+                gap: 15%;
+                .abt-content-img {
+                    width: 35%;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .abt-content-description {
+                    width: 50%;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    line-height: 32px;
+                    h4 {
+                        width: 80%;
+                        font-size: 25px;
+                        line-height: 25px !important;
+                    }
+                    p {
+                        width: 80%;
+                        margin: 20px 0;
+                    }
+                }
+                .abt-content-icon {
+                    display: flex;
+                    gap: 5%;
+                    .fa-facebook, .fa-instagram, .fa-twitter, .fa-bell {
+                        color: black;
+                        padding: 0;
+                        background-color: white;
+                        display: flex;
+                        font-size: 20px;
+                    }
+                }
+            }
+            .abt-content-2 {
+                gap: 0% ;
+                .abt-content-description {
+                    align-items: center;
+                    p {
+                        margin: 5px 0 ;
+                    }
+                }
+            }
+        }
+    }
+    .about-divide {
+        width: 100%;
+        height: 1px;
+        background-color: rgb(190, 186, 186);
+        margin-top: 30px;
+    }
+    .tag-item {
+        color: #757474;
+        font-weight: 600;
+    }
+}
