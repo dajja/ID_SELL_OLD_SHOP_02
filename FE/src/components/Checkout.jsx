@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Breadcrumb from "../componentLittle/Breadcrumb";
 import Footer from "./Footer";
-import Item from "./Item";
+
 import '../sass/checkout.scss';
 
 import React, { useEffect } from 'react';
@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Checkout() {
     let cart = useSelector((state) => state.cart)
+    console.log(cart);
+    let totalAmount = cart.reduce((total, currentValue) => total + currentValue.number*currentValue.price ,0)
     let dispatch = useDispatch();
     useEffect(() => {
         fetch("http://localhost:8000/products")
@@ -16,7 +18,26 @@ function Checkout() {
             .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
             .catch((error) => console.log(error));
     }, [dispatch])
-    console.log(cart);
+
+    let handleRemove = (item) => {
+        console.log("xoa", item);
+        dispatch({
+            type: "REMOVE_FROM_CART", payload: item
+        })
+    }
+    let increaseItem = (item) => {
+        console.log("tang", item);
+        dispatch({
+            type: "INCREASE", payload: item
+        })
+    }
+    let decreaseItem = (item) => {
+        console.log("giam", item);
+        dispatch({
+            type: "DECREASE", payload: item
+        })
+    }
+    
     return (
         <>
             <div className="checkout-container">
@@ -40,12 +61,12 @@ function Checkout() {
                                                 </div>
                                                 <div className="item-quantity">
                                                     <div className="item-quantity-1">
-                                                        <button>-</button>
+                                                        <button onClick={() => decreaseItem(item)}>-</button>
                                                         <div className="item-amount">{item.number}</div>
-                                                        <button>+</button>
+                                                        <button onClick={() => increaseItem(item)}>+</button>
                                                     </div>
                                                     <div className="item-quantity-2">
-                                                        <button>Remove</button>
+                                                        <button onClick={() => handleRemove(item)}>Remove</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,11 +81,11 @@ function Checkout() {
                             </div>
                             <div className="ck-cart-subtotal">
                                 <div>Subtotal: </div>
-                                <div>$3000</div>
+                                <div>{totalAmount}</div>
                             </div>
                             <div className="ck-cart-total">
                                 <div>Cart total:</div>
-                                <div>$30000</div>
+                                <div>{totalAmount}</div>
                             </div>
                             <div className="ck-cart-code"><input type="checkbox" /> I have a coupon code </div>
                         </div>

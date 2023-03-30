@@ -29,13 +29,45 @@ const productReducer = (state = initialState, action) => {
         }
     }
     if (action.type === "REMOVE_FROM_CART") {
-
+        let { payload } = action;
+        let { cart } = state;
+        return {
+            ...state,
+            cart: cart.filter((item) => item.id !== payload.id)
+        }
     }
     if (action.type === "INCREASE") {
-
+        let { payload} = action;
+        let { cart } = state;
+        return {
+            ...state,
+            cart: cart.map(item => {
+                if (item.id === payload.id) {
+                    return {
+                        ...item,
+                        number: item.number + 1,
+                    }
+                }
+                return item;
+            })
+        }
     }
     if (action.type === "DECREASE") {
-
+        let { payload } = action;
+        let {cart} = state;
+        return {
+            ...state,
+            cart: cart.map(item => {
+                if (item.id === payload.id) {
+                    return {
+                        ...item,
+                        number: item.number - 1,
+                    }
+                }
+                return item;
+            })
+            .filter(item => item.number > 0)
+        }
     }
     return state;
 };

@@ -1,0 +1,133 @@
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 20%;
+    height: max-content;
+    box-sizing: border-box;
+    background-color: rgb(74, 72, 72);
+    transform: translateX(-120%);
+    transition: 0.7s;
+
+    button:nth-child(1) {
+        background-color: white;
+        border-radius: 50%;
+        padding: 10px 15px;
+        position: absolute;
+        right: -20px;
+        top: 10px;
+    }
+
+    button:nth-child(1):hover {
+        background-color: rgb(27, 244, 27);
+        border: 2px solid rgb(27, 244, 27);
+    }
+
+    .sidebar-content {
+        padding: 40px 30px;
+        color: white;
+        line-height: 40px;
+        font-weight: 200;
+
+        .sidebar-user {
+            display: flex;
+            gap: 5%;
+
+            .fa-user {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .fa-magnifying-glass {
+            width: 100%;
+            padding: 5px 0;
+            border-bottom: 1px solid white;
+        }
+
+        .sidebar-pagelist {
+            display: flex;
+            gap: 5%;
+
+            .sidebar-pagelist-1 {
+                i {
+                    transition: all 0.8s ease;
+                }
+
+                i.actived {
+                    transform: rotate(90deg);
+                }
+
+                ul {
+                    line-height: 25px;
+                    list-style-type: none;
+                    .li-actived {
+                        animation: slide 0.5s ease forwards;
+                        opacity: 0;
+                        a {
+                            text-decoration: none;
+                            color: white;
+                        }
+                    }
+                    .li-actived:nth-child(1) {
+                        animation-delay: 0.1s;
+                    }
+                    .li-actived:nth-child(2) {
+                        animation-delay: 0.3s;
+                    }
+                    .li-actived:nth-child(3) {
+                        animation-delay: 0.5s;
+                    }   
+                }
+            }
+
+        }
+
+        .sidebar-information {
+            padding: 15px 0;
+            line-height: 27px;
+
+            button {
+                background-color: rgb(74, 72, 72);
+                color: white;
+                font-weight: 600;
+                font-size: 15px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        .sidebar-social {
+            display: flex;
+            gap: 5%;
+
+            .fa-facebook,
+            .fa-instagram,
+            .fa-twitter,
+            .fa-square-phone,
+            .fa-bell {
+                font-size: 18px;
+                padding: 5px;
+                color: rgb(20, 15, 15);
+                background-color: rgb(74, 72, 72);
+            }
+        }
+    }
+}
+
+.active {
+    transform: translateX(0%);
+    transition: 0.7s;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
