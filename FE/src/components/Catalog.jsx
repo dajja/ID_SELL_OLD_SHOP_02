@@ -6,19 +6,21 @@ import Item from './Item';
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-
+import SweetPagination from 'sweetpagination';
+import { useSelector, useDispatch } from 'react-redux';
 function Catalog() {
-    const [data, setData] = useState([]);
     let tagData = [
         'Sneakers', 'Running', 'Sport', 'Casual', 'Clothing', 'Adidas'
     ]
-    const fetchData = async () => {
-        await axios.get("http://localhost:8000/product")
-            .then((response) => setData(response.data))
-            .catch((error) => console.log(error));
-    }
+
+    let products = useSelector((state) => state.products);
+    let dispatch = useDispatch();
+    const [currentPageData, setCurrentPageData] = useState(products);
     useEffect(() => {
-        fetchData();
+        fetch("http://localhost:8000/productsMain")
+            .then((res) => res.json())
+            .then((data) => dispatch({ type: "SAVE_PRODUCTS", payload: data }))
+            .catch((err) => console.log(err));
     }, [])
 
     return (
@@ -50,13 +52,19 @@ function Catalog() {
                 </div>
                 <div className="catalog-listItem pad-15-20">
                     <div className="catalog-list-grid">
-                        {data.map((item, i) => (
-                            <Item key={i} image={item.image} bonus={item.bonus} description={item.name} price={item.price} sale={item.sale} />
-                        ))} 
+                        {currentPageData.map((item, i) => (
+                            <Item key={i} element={item} />
+                        ))}
                     </div>
                 </div>
                 <div className="catalog-btn">
-                    <button>Load More</button>
+                    <SweetPagination
+                        currentPageData={setCurrentPageData}
+                        getData={products}
+                        dataPerPage={12}
+                        navigation={true}
+                        getStyle={'style-1'}
+                    />
                 </div>
                 <div className="ctl-divide" />
                 <div className="tag col-10">

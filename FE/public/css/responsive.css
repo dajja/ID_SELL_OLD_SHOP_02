@@ -44,6 +44,18 @@
     }
     .header-3c {
         justify-content: end !important;
+        margin-right: 12px !important;
+    }
+    .header-3-dola {
+        font-size: 12px !important;
+    }
+    .fa-cart-shopping {
+        font-size: 15px !important;
+    }
+    .header-3-itemAmount {
+        left: 10px !important;
+        bottom: 12px !important;
+        font-size: 14px !important;
     }
     /* header */
 
@@ -201,13 +213,17 @@
         padding: 8px !important;
         height: auto !important;
     }
-    .item-img {
-        height: auto !important;
-    }
     .item-bonus {
         top: 12px !important;
         left: 12px !important;
         color: #de1919;
+    }
+    .item-money {
+        flex-wrap: wrap !important;
+    }
+    .item-money button {
+        font-size: 12px !important;
+        margin-top: 5px !important;
     }
     /* Item */
 
@@ -300,7 +316,7 @@
         font-size: 12px !important;
     }
     .act-content-order-2 {
-        text-align: center;
+        text-align: center !important;
     }
     .act-content-order-3, .act-content-order-4, .act-content-order-5 {
         display: none !important;
@@ -309,4 +325,22 @@
         display: block !important;
     }
     /* Account */
+
+    /* Sidebar */
+    .sidebar-container {
+        top: 10px !important;
+        transform: translateX(-150%) !important;
+        width: 50% !important;
+    }
+    .active {
+        transform: translateX(0%) !important;
+    }
+    .sidebar-information {
+        display: none !important;
+    }
+    .sidebar-social {
+        flex-wrap: wrap !important;
+        gap: 10% !important;
+    }
+    /* Sidebar */
 }

@@ -37,5 +37,22 @@
 
 .header-3c {
     justify-content: end;
-    margin-right: 10px;
+    margin-right: 18px;
+}
+.header-3-itemCart {
+    position: relative;
+    display: flex;
+}
+.header-3-itemAmount {
+    position: absolute;
+    left: 10px;
+    bottom: 15px;
+    padding: 0 4px;
+    background-color: yellow;
+    border-radius: 70%;
+    z-index: 2;
+    font-size: 14px;
+}
+.fa-cart-shopping {
+    font-size: 20px;
 }
