@@ -54,10 +54,10 @@
     }
     .homepage-product {
         max-width: 100%;
-        padding: 100px 150px;
+        padding: 100px 200px;
         .homepage-listItem {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: 33.33333333333333% 33.33333333333333% 33.33333333333333%;
         }
     }
     .homepage-sale {
