@@ -11,10 +11,16 @@ const productReducer = (state = initialState, action) => {
             products: [...action.payload],
         }
     }
+    if (action.type === "SAVE_CART") {
+        return {
+            ...state,
+            cart: [...action.payload],
+        }
+    }
     if (action.type === "ADD_TO_CART") {
         let { paycak } = action;
         let { cart } = state;
-        let findIndex = cart.findIndex((e, i) => e.id === paycak.id);
+       /*  let findIndex = cart.findIndex((e, i) => e.id === paycak.id);
         if (findIndex === -1) {
             cart.push({ id: paycak.id, number: 1, image: paycak.image, price: paycak.price, name: paycak.name});
             return {
@@ -22,11 +28,31 @@ const productReducer = (state = initialState, action) => {
                 cart: [...cart],
             }
         }
-        cart[findIndex].number = cart[findIndex].number + 1;
+        cart[findIndex].number = cart[findIndex].number + 1; */
+        cart.push(
+            {
+                id:paycak.id,
+                name:paycak.name,
+                image:paycak.image,
+                price:paycak.price,
+                number:1
+            }
+        )
         return {
             ...state,
             cart: [...cart],
         }
+    }
+    if(action.type==="EDIT_TO_CART"){
+        let { paycak } = action;
+        let { cart } = state;
+        let findIndexCart=cart.findIndex((e,i)=>e.id===paycak.id)
+        cart[findIndexCart].number+=1
+        return {
+            ...state,
+            cart: [...cart],
+        }
+
     }
     if (action.type === "REMOVE_FROM_CART") {
         let { payload } = action;

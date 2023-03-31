@@ -1,14 +1,22 @@
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function Header() {
+    let dispatch=useDispatch()
     let cart = useSelector((state) => state.cart);
-    let total = cart.reduce((pre, cur) => (pre += cur.number), 0);
+    
     const [showBar, setShowBar] = useState(false);
     let handleSidebar = () => {
         setShowBar(!showBar);
     }
+    
+    useEffect(() => {
+        fetch("http://localhost:8000/cart")
+        .then((res) => res.json())
+        .then((data) => dispatch({type: "SAVE_CART", payload: data}))
+        .catch((error) => console.log(error));
+    }, [])
     // console.log(showBar);
     return (
         <>
@@ -34,8 +42,9 @@ export default function Header() {
                         <div><i className="fa-solid fa-magnifying-glass" /></div>
                         <div className="header-3-dola">En | USD</div>
                         <div className="header-3-itemCart">
-                            <Link to={'/checkout'} ><i className="fa-solid fa-cart-shopping" /> </Link>
-                            <div className="header-3-itemAmount"> {total} </div>
+                            <Link to={'/cart'} ><i className="fa-solid fa-cart-shopping" /> </Link>
+                            {/* {amount ? <div className="header-3-itemAmount"> {total} </div> : ""} */}
+                            {cart.length>0 ? <div className="header-3-itemAmount"> {cart.length} </div> :""}
                         </div>
                     </div>
                 </div>
