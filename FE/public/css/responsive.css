@@ -206,6 +206,9 @@
     .catalog-list-grid {
         grid-template-columns: auto auto !important;
     }
+    .catalog-listItem .item {
+        height: max-content !important;
+    }
     /* Catalog */
 
     /* Item */
@@ -343,4 +346,39 @@
         gap: 10% !important;
     }
     /* Sidebar */
+
+    /* Cart */
+    .cart-content {
+        padding: 15px 5px !important;
+    }
+    .cart-content-infor {
+        flex-wrap: wrap !important;
+    }
+    .cart-content-2 {
+        padding: 20px 0;
+    }
+    tr th {
+        display: none !important;
+        position: relative !important;
+    }
+    td {
+        flex-wrap: wrap !important;
+        display: flex;
+        border: none !important;
+        position: relative !important;
+        justify-content: center !important;
+        padding: 0 !important;
+    }
+    .td-amount {
+        justify-content: center !important;
+        gap: 5% !important;
+    }
+    .td-amount-btn {
+        flex-direction: row !important;
+        gap: 10%;
+    }
+    .cart-content-2 {
+        max-width: 100% !important;
+    }
+    /* Cart */
 }

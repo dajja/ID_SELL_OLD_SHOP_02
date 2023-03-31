@@ -1,0 +1,133 @@
+.pad-15-20 {
+    padding: 15px 20px;
+}
+.cart-container {
+    max-width: 100%;
+    box-sizing: border-box;
+    .cart-content {
+        font-family: 'Roboto', sans-serif;
+        max-width: 100%;
+        padding: 40px 20px;
+        .cart-content-infor {
+            margin-top: 5px;
+            display: flex;
+            gap: 15%;
+            width: 100%;
+            .cart-content-1  {
+                width: 20%;
+                display: flex;
+                gap: 10%;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+            .cart-content-2 {
+                max-width: 70%;
+                width: 100%;
+                .cart-table {
+                    width: 100%;
+                    border-top: 1px solid black;
+                    border-bottom: 1px solid black;
+                    tr, th {
+                        max-width: 100%;
+                        padding: 10px 0;
+                    }
+                    th {
+                        text-align: start;
+                    }
+                    td {
+                        border-bottom: 1px solid #E0E0E0;
+                        padding: 15px 0;
+                        .td-item {
+                            width: 100%;
+                            display: flex;
+                            gap: 5%;
+                            .td-item-img {
+                                width: 25%;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                            .td-item-name {
+                                width: 70%;
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
+                        .td-color {
+                            display: flex;
+                        }
+                        .td-amount {
+                            display: flex;
+                            width: 100%;
+                            gap: 20%;
+                            align-items: center;
+                            .td-amount-btn {
+                                display: flex;
+                                flex-direction: column;
+                                button {
+                                    padding: 2px 8px;
+                                    margin: 5px 0;
+                                    font-weight: 500;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    border: none;
+                                    color: white;
+                                }
+                                .td-btn-up {
+                                    background-color: rgb(22, 212, 22);
+                                    order: 2;
+                                }
+                                .td-btn-down {
+                                    background-color: rgb(228, 54, 54);
+                                }
+                                .td-btn-up:hover {
+                                    color: black;
+                                    transition: all 0.5s ease;
+                                }
+                                .td-btn-down:hover {
+                                    color: black;
+                                    transition: all 0.5s ease;
+                                }
+                            }
+                        }
+                        button {
+                            padding: 5px 15px;
+                        }
+                    }
+                }
+
+            }
+            .cart-shipping {
+                display: flex;
+                padding: 15px 0;
+                border-bottom: 1px solid rgb(159, 158, 158);
+                justify-content: space-between;
+            }
+            .btn-checkout {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                button {
+                    background-color: black;
+                    color: #FFFF;
+                    padding: 15px 60px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+
+.cl-1 {
+    width: 40%;
+}
+.cl-2 {
+    width: 11.25%;
+}
+.cl-3 {
+    width: 5%;
+}
+

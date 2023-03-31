@@ -10,13 +10,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Homepage() {
     let products = useSelector((state) => state.products)
+
     let dispatch = useDispatch();
     useEffect(() => {
         fetch("http://localhost:8000/products")
             .then((res) => res.json())
             .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
             .catch((error) => console.log(error));
-    }, [dispatch])
+
+        
+    }, [])
     let newsMasonry = [
         {
             image: <img src="./image/new1.jpg" alt="" />,
@@ -88,9 +91,11 @@ function Homepage() {
                 </div>
                 <div className="homepage-product">
                     <div className="homepage-listItem">
-                        {products.length > 0 && products.map((item, i) => (
+                     {/*    {products.length > 0 && products.map((item, i) => (
                             <Item key={i} element={item} />
-                        ))}
+                        ))} */}
+                            <Item  item={products} />
+
                     </div>
                 </div>
                 <div className="homepage-sale">
