@@ -32,7 +32,7 @@
     .catalog-listItem {
         .catalog-list-grid {
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: 25% 25% 25% 25%;
             .item {
                 height: 330px ;
                 .item-img {

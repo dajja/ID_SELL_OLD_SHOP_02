@@ -18,11 +18,11 @@ function Sidebar({ showBar, active }) {
                 <button onClick={handleSidebar}>X</button>
                 <div className="sidebar-content">
                     <div className='sidebar-user'>
-                        <i class="fa-regular fa-user"></i>
+                        <i className="fa-regular fa-user"></i>
                         <div>Xin chao user</div>
                     </div>
                     <div>
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div>Sale</div>
                     <div>Man</div>
@@ -33,14 +33,14 @@ function Sidebar({ showBar, active }) {
                         <div>
                             <div onClick={() => hoverBar()} className="sidebar-pagelist-1">
                                 {showList ? <>
-                                    <i class="fa-solid fa-chevron-right actived"></i>
+                                    <i className="fa-solid fa-chevron-right actived"></i>
                                 <ul>
                                     <li className='li-actived'> <Link to={'/about'}>About</Link></li>
                                     <li className='li-actived'> <Link to={'/catalog'}>Our Products</Link></li>
                                     <li className='li-actived'> <Link to={'/login'}>Login</Link></li>
                                 </ul>
                                 </>
-                                 : <i class="fa-solid fa-chevron-right"></i> }
+                                 : <i className="fa-solid fa-chevron-right"></i> }
                             </div>
                         </div>
                     </div>
@@ -50,11 +50,11 @@ function Sidebar({ showBar, active }) {
                         </div>
                     </div>
                     <div className='sidebar-social'>
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-solid fa-square-phone"></i>
-                        <i class="fa-regular fa-bell"></i>
+                        <i className="fa-brands fa-facebook"></i>
+                        <i className="fa-brands fa-instagram"></i>
+                        <i className="fa-brands fa-twitter"></i>
+                        <i className="fa-solid fa-square-phone"></i>
+                        <i className="fa-regular fa-bell"></i>
                     </div>
                 </div>
             </div>

@@ -273,6 +273,9 @@
         padding: 10px 15px !important;
         margin-top: 10px !important;
     }
+    .checkout-content .item-img {
+        width: 40% !important;
+    }
     /* Checkout */
 
     /* About */
@@ -356,6 +359,9 @@
     }
     .cart-content-2 {
         padding: 20px 0;
+    }
+    table {
+        table-layout: fixed !important;
     }
     tr th {
         display: none !important;

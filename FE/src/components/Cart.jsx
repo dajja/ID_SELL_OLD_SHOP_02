@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Breadcrumb from './../componentLittle/Breadcrumb';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,28 +16,67 @@ const accuracy = (e) => {
 function Cart() {
     let cart = useSelector((state) => state.cart);
     let dispatch = useDispatch();
-    let totalAmount = cart.reduce((total,currentValue) => {
-        return total + currentValue.price* currentValue.number;
+    let totalAmount = cart.reduce((total, currentValue) => {
+        return total + currentValue.price * currentValue.number;
     }, 0)
+    useEffect(() => {
+        fetch("http://localhost:8000/cart")
+            .then((res) => res.json())
+            .then((data) => dispatch({ type: "SAVE_CART", payload: data }))
+            .catch((error) => console.log(error));
+    }, [])
     let handleRemove = (item) => {
-        console.log("xoa",item);
-        dispatch({
-            type: "REMOVE_FROM_CART", payload: item
-        })
+        let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
+        // console.log(findIndexCart);
+        if (findIndexCart !== -1) {
+            axios.delete(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {
+                id: cart[findIndexCart].id,
+                name: cart[findIndexCart].name,
+                image: cart[findIndexCart].image,
+                price: cart[findIndexCart].price,
+                number: cart[findIndexCart].number
+            })
+                .then(res => dispatch({
+                    type: "REMOVE_FROM_CART", payload: item
+                }))
+                .catch((err) => console.log(err));
+        }
     }
 
     let increaseItem = (item) => {
-        console.log("them", item);
-        dispatch({
-            type: "INCREASE", payload: item
-        })
+        // console.log("tang", item);
+        let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
+        if (findIndexCart !== -1) {
+            axios.put(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {
+                id: cart[findIndexCart].id,
+                name: cart[findIndexCart].name,
+                image: cart[findIndexCart].image,
+                price: cart[findIndexCart].price,
+                number: cart[findIndexCart].number + 1
+            })
+                .then(res => dispatch({
+                    type: "INCREASE", payload: item
+                }))
+                .catch(err => console.log(err));
+        }
     }
 
     let decreaseItem = (item) => {
-        console.log("giam", item);
-        dispatch({
-            type: "DECREASE", payload: item
-        })
+        // console.log("giam", item);
+        let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
+        if (findIndexCart !== -1) {
+            axios.put(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {
+                id: cart[findIndexCart].id,
+                name: cart[findIndexCart].name,
+                image: cart[findIndexCart].image,
+                price: cart[findIndexCart].price,
+                number: cart[findIndexCart].number - 1
+            })
+                .then(res => dispatch({
+                    type: "DECREASE", payload: item
+                }))
+                .catch(err => console.log(err));
+        }
     }
     return (
         <>
@@ -90,7 +130,7 @@ function Cart() {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className='cl-2 col-10'>{item.number * item.price}</td>
+                                                <td className='cl-2 col-10'>${item.number * item.price}</td>
                                                 <td className='cl-3 col-10'>
                                                     <button onClick={() => handleRemove(item)}>X Remove</button>
                                                 </td>
@@ -105,11 +145,11 @@ function Cart() {
                             </div>
                             <div className="cart-shipping">
                                 <div>Subtotal:</div>
-                                <div>{totalAmount}</div>
+                                <div>${totalAmount}</div>
                             </div>
                             <div className="cart-shipping">
                                 <h3>Cart total:</h3>
-                                <div>{totalAmount}</div>
+                                <div>${totalAmount}</div>
                             </div>
                             <div className="btn-checkout">
                                 <Checkbox onChange={accuracy}>I have a coupon code</Checkbox>

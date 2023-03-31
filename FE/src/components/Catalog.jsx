@@ -12,17 +12,15 @@ function Catalog() {
     let tagData = [
         'Sneakers', 'Running', 'Sport', 'Casual', 'Clothing', 'Adidas'
     ]
-
-    let products = useSelector((state) => state.products);
     let dispatch = useDispatch();
-    const [currentPageData, setCurrentPageData] = useState(products);
     useEffect(() => {
         fetch("http://localhost:8000/productsMain")
             .then((res) => res.json())
             .then((data) => dispatch({ type: "SAVE_PRODUCTS", payload: data }))
             .catch((err) => console.log(err));
-    }, [])
-
+    }, [dispatch])
+    let productsMain = useSelector((state) => state.products);
+    const [currentPageData, setCurrentPageData] = useState(productsMain);
     return (
         <>
             <div className="catalog-container">
@@ -32,8 +30,8 @@ function Catalog() {
                     <div className="catalog-filter-1 col-6">
                         <p className="catalog-filter-p">View: </p>
                         <div>
-                            <select name="sort" id className="select">
-                                <option value={0} selected="selected">Sort</option>
+                            <select name="sort" className="select" defaultValue={0}>
+                                <option value={0}>Sort</option>
                                 <option value={1}> Theo chu cai (A-&gt;Z)</option>
                                 <option value={2}> Theo chu cai (Z-&gt;A)</option>
                                 <option value={3}> Theo so tien (S-&gt;B)</option>
@@ -42,8 +40,8 @@ function Catalog() {
                         </div>
                     </div>
                     <div className="catalog-filter-2 col-8">
-                        <select name="filter" id className="select col-8">
-                            <option value={0} selected="selected">View filter</option>
+                        <select name="filter" className="select col-8" defaultValue={0}>
+                            <option value={0}>View filter</option>
                             <option value={1}> Giày</option>
                             <option value={2}> Túi</option>
                             <option value={3}> Khác</option>
@@ -53,14 +51,14 @@ function Catalog() {
                 <div className="catalog-listItem pad-15-20">
                     <div className="catalog-list-grid">
                         {currentPageData.map((item, i) => (
-                            <Item key={i} element={item} />
+                            <Item key={item.id} element={item} />
                         ))}
                     </div>
                 </div>
                 <div className="catalog-btn">
                     <SweetPagination
                         currentPageData={setCurrentPageData}
-                        getData={products}
+                        getData={productsMain}
                         dataPerPage={12}
                         navigation={true}
                         getStyle={'style-1'}
@@ -70,7 +68,7 @@ function Catalog() {
                 <div className="tag col-10">
                     {tagData.map((item, i) => {
                         return (
-                            <div className="tag-item">{item}</div>
+                            <div key={i} className="tag-item">{item}</div>
                         )
                     })}
                 </div>
