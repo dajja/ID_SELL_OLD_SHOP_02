@@ -16,7 +16,7 @@ export default function Header() {
         .then((res) => res.json())
         .then((data) => dispatch({type: "SAVE_CART", payload: data}))
         .catch((error) => console.log(error));
-    }, [])
+    }, [dispatch])
     // console.log(showBar);
     return (
         <>
@@ -24,7 +24,7 @@ export default function Header() {
                 <div className="header-3 col-10">
                     <div className="header-3a header-3-item col-3">
                         <button onClick={handleSidebar}>
-                            <img src="./image/3dots.svg" alt="" /> <br />
+                            <img src="/image/3dots.svg" alt="" /> <br />
                         </button>
                         <div>
                             {showBar ? <Sidebar active="active" showBar={handleSidebar}/> : <Sidebar /> }
