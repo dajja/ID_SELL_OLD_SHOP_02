@@ -67,14 +67,6 @@
   ],
   "productsMain": [
     {
-      "id": 0,
-      "name": "giay the thao",
-      "image": "./image/giay3.jpg",
-      "price": 20,
-      "sale": 18,
-      "bonus": "Free shipping"
-    },
-    {
       "id": 1,
       "name": "tui da",
       "image": "./image/giay.webp",
@@ -224,6 +216,14 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
       "price": 24,
       "sale": 20,
+      "bonus": "Free shipping"
+    },
+    {
+      "id": 20,
+      "name": "giay the thao",
+      "image": "./image/giay3.jpg",
+      "price": 20,
+      "sale": 18,
       "bonus": "Free shipping"
     }
   ],
