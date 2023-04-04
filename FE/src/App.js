@@ -18,12 +18,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/product" element={<Detail />}>
-        </Route>
-        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/product" element={<Detail />} />
         <Route path="/about" element={<About/>}/>
         <Route path="/account" element={<Account/>}/>
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/cart" element={<Cart/>} >
+        </Route>
+        <Route path="/cart/checkout" element={<Checkout/>}/>
       </Routes>
     </BrowserRouter>
   );

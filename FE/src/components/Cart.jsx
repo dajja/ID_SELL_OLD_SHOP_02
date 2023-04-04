@@ -24,7 +24,7 @@ function Cart() {
             .then((res) => res.json())
             .then((data) => dispatch({ type: "SAVE_CART", payload: data }))
             .catch((error) => console.log(error));
-    }, [])
+    }, [dispatch])
     let handleRemove = (item) => {
         let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
         // console.log(findIndexCart);
@@ -153,7 +153,7 @@ function Cart() {
                             </div>
                             <div className="btn-checkout">
                                 <Checkbox onChange={accuracy}>I have a coupon code</Checkbox>
-                                <Link to="/checkout"><button>Checkout</button></Link>
+                                <Link to="/cart/checkout"><button>Checkout</button></Link>
                             </div>
                         </div>
                     </div>

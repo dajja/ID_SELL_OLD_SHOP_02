@@ -2,7 +2,22 @@
     display: flex;
     border-bottom: 1px solid rgb(225, 224, 224);
     gap: 10px;
-    .breadcrumbs-location {
-        font-weight: 600;
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 17px;
     }
+    .breadcrumbs-element {
+        display: flex;
+        gap: 10px;
+        .breadcrumbs-location {
+            font-weight: 600;
+            display: flex;
+            gap: 10px;
+        }
+    }
+}
+.crumb {
+    display: flex;
+    gap: 10px;
 }
