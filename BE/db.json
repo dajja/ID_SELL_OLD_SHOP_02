@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "tui da",
-      "image": "./image/giay.webp",
+      "image": "/image/giay.webp",
       "price": 25,
       "sale": 20,
       "bonus": "Free shipping"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "giay ",
-      "image": "./image/giay.webp",
+      "image": "/image/giay.webp",
       "price": 28,
       "sale": 18,
       "bonus": "Free shipping"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "name": "giay l",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 15,
       "sale": "",
       "bonus": "Free shipping"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "name": "giay l",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 14,
       "sale": 10,
       "bonus": "Free shipping"
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "name": "giay n",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 18,
       "sale": "",
       "bonus": "Free shipping"
@@ -51,7 +51,7 @@
     {
       "id": 7,
       "name": "giay the thao",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 20,
       "sale": 18,
       "bonus": "Free shipping"
@@ -68,43 +68,48 @@
   "productsMain": [
     {
       "id": 1,
-      "name": "tui da",
-      "image": "./image/giay.webp",
+      "name": "giay da",
+      "image": "/image/giay.webp",
       "price": 25,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 2,
       "name": "giay ",
-      "image": "./image/giay.webp",
+      "image": "/image/giay.webp",
       "price": 28,
       "sale": 18,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 3,
       "name": "giay l",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 15,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 4,
       "name": "giay l",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 14,
       "sale": 10,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 5,
       "name": "giay n",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 18,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 6,
@@ -112,7 +117,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025248/cld-sample-5.jpg",
       "price": 18,
       "sale": 11,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 7,
@@ -120,7 +126,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025232/samples/ecommerce/leather-bag-gray.jpg",
       "price": 30,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "tui"
     },
     {
       "id": 8,
@@ -128,63 +135,71 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
       "price": 24,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "dong ho"
     },
     {
       "id": 9,
       "name": "dong ho",
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
-      "price": 24,
+      "price": 25,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "dong ho"
     },
     {
       "id": 10,
       "name": "giay siu",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 20,
       "sale": 15,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 11,
-      "name": "tui dasi",
-      "image": "./image/giay.webp",
+      "name": "giay dasi",
+      "image": "/image/giay.webp",
       "price": 28,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 12,
       "name": "giay aaaa",
-      "image": "./image/giay.webp",
+      "image": "/image/giay.webp",
       "price": 28,
       "sale": 18,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 13,
       "name": "giay lsss",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 15,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 14,
       "name": "giay l",
-      "image": "./image/giay2.jpg",
+      "image": "/image/giay2.jpg",
       "price": 17,
       "sale": 10,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 15,
       "name": "giay n",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 18,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 16,
@@ -192,7 +207,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025248/cld-sample-5.jpg",
       "price": 18,
       "sale": 11,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
     },
     {
       "id": 17,
@@ -200,7 +216,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025232/samples/ecommerce/leather-bag-gray.jpg",
       "price": 30,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "tui"
     },
     {
       "id": 18,
@@ -208,7 +225,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
       "price": 24,
       "sale": 22,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "dong ho"
     },
     {
       "id": 19,
@@ -216,15 +234,26 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
       "price": 24,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "dong ho"
     },
     {
       "id": 20,
       "name": "giay the thao",
-      "image": "./image/giay3.jpg",
+      "image": "/image/giay3.jpg",
       "price": 20,
       "sale": 18,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "type": "giay"
+    },
+    {
+      "id": 21,
+      "name": "kinh",
+      "image": "https://cdn.tgdd.vn/Files/2019/08/07/1185182/trong-kinh-co-bao-nhieu-loai-nen-mua-loai-nao--4.jpg",
+      "price": 40,
+      "sale": 0,
+      "bonus": "Free shipping",
+      "kinh": "kinh"
     }
   ],
   "cart": []
