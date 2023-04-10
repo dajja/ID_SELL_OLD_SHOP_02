@@ -47,6 +47,7 @@ function Cart() {
         // console.log("tang", item);
         let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
         if (findIndexCart !== -1) {
+
             axios.put(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {
                 id: cart[findIndexCart].id,
                 name: cart[findIndexCart].name,
@@ -62,9 +63,8 @@ function Cart() {
     }
 
     let decreaseItem = (item) => {
-        // console.log("giam", item);
         let findIndexCart = cart.findIndex((e, i) => e.id === item.id);
-        if (findIndexCart !== -1) {
+        if (findIndexCart !== -1 && cart[findIndexCart].number > 1) {
             axios.put(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {
                 id: cart[findIndexCart].id,
                 name: cart[findIndexCart].name,
@@ -72,10 +72,17 @@ function Cart() {
                 price: cart[findIndexCart].price,
                 number: cart[findIndexCart].number - 1
             })
-                .then(res => dispatch({
-                    type: "DECREASE", payload: item
-                }))
+                .then(res => {
+                    dispatch({
+                        type: "DECREASE", payload: item
+                    });
+                    // console.log("cart[findIndexCart].number", cart[findIndexCart].number);
+                })
                 .catch(err => console.log(err));
+        }
+        else {
+            axios.delete(`http://localhost:8000/cart/${cart[findIndexCart].id}`, {})
+            dispatch({ type: "REMOVE_FROM_CART", payload: item })
         }
     }
     return (

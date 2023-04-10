@@ -66,7 +66,7 @@ function Item(props) {
                     <div className="item-price">${element.price}</div>
                     <div className="item-sale"></div>
                     <Link to={`/product/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
-                    <button onClick={() => handleClick(element)}>Add to cart</button>
+                    <div className='item-btn'><button onClick={() => handleClick(element)}>Add to cart</button></div>
                 </div>
             </div>
         </>
