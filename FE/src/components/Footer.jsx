@@ -35,13 +35,13 @@ export default function Footer() {
                             <div className="divider" />
                             <div className="footer-3c-2">
                                 <div>
-                                    <img src="./image/Visa_Inc._logo.svg.png" alt="" />
+                                    <img src="/image/Visa_Inc._logo.svg.png" alt="" />
                                 </div>
                                 <div>
-                                    <img src="./image/mastercard.svg.png" alt="" />
+                                    <img src="/image/mastercard.svg.png" alt="" />
                                 </div>
                                 <div>
-                                    <img src="./image/PayPal.svg.png" alt="" />
+                                    <img src="/image/PayPal.svg.png" alt="" />
                                 </div>
                             </div>
                         </div>

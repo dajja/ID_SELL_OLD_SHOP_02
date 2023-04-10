@@ -28,19 +28,27 @@
     .item-money {
         display: flex;
         font-size: 14px;
+        align-items: center;
         gap: 10%;
         .item-sale {
             color: rgb(252, 153, 61);
         }
-        button {
-            padding: 3px 10px;
-            background-color: white;
-            cursor: pointer;
-            justify-content: flex-end;
+        .item-price, .item-sale {
+            width: 5%;
         }
-        button:hover {
-            background-color: black;
-            color: white;
+        .item-btn {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            button {
+                padding: 5px 20px;
+                background-color: white;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: black;
+                color: white;
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ function Breadcrumb() {
                 </div>
             )
         })
-        console.log(crumbs);
     return (
         <>
             <div className="breadcrumbs pad-15-20">

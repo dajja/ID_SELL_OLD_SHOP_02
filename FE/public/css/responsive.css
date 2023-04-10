@@ -60,6 +60,9 @@
     /* header */
 
     /* footer */
+    .footer-information h2 {
+        margin-left: 10px !important;
+    }
     .footer-3 {
         gap: 20px  !important;
         justify-content: center !important;
@@ -209,6 +212,9 @@
     .catalog-listItem .item {
         height: max-content !important;
     }
+    .catalog-listItem .item .item-img {
+        height: 170px !important;
+    }
     /* Catalog */
 
     /* Item */
@@ -227,6 +233,9 @@
     .item-money button {
         font-size: 12px !important;
         margin-top: 5px !important;
+    }
+    .item-money .item-btn {
+        justify-content: flex-start !important;
     }
     /* Item */
 
