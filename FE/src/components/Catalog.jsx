@@ -20,9 +20,10 @@ function Catalog() {
     }, [dispatch])
     let productsMain = useSelector((state) => state.products);
     let productFilter = useSelector((state) => state.productFilter);
-    console.log(productFilter);
+    let productSort = useSelector((state) => state.productSort);
     const [currentPageData, setCurrentPageData] = useState(productsMain);
     let sortProduct = (event) => {
+        console.log(event.target.value)
         if (event.target.value === "name_asc") {
             dispatch({ type: "SORT_NAME_ASC" })
         } else if (event.target.value === "name_desc") {
@@ -32,12 +33,13 @@ function Catalog() {
         } else if (event.target.value === "price_desc") {
             dispatch({ type: "SORT_PRICE_DESC" })
         }
+
     }
     let filterProduct = (event) => {
         dispatch({ type: "FILTER_PRODUCT", payload: event.target.value });
     }
     useEffect(() => {
-        setCurrentPageData(productsMain);
+        setCurrentPageData(productSort);
     }, [])
     return (
         <>
