@@ -17,7 +17,9 @@ export default function Header() {
         .then((data) => dispatch({type: "SAVE_CART", payload: data}))
         .catch((error) => console.log(error));
     }, [dispatch])
-    // console.log(showBar);
+    const resetPage =() => {
+        dispatch({type: "RESET_FS"});
+    }
     return (
         <>
             <div className="header">
@@ -35,7 +37,7 @@ export default function Header() {
                     </div>
                     <div className="header-3b header-3-item col-4">
                         <div>
-                            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }}><h2 style={{ fontWeight: 600 }}>MESSTO</h2></Link>
+                            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }} onClick={() => resetPage()}><h2 style={{ fontWeight: 600 }}>MESSTO</h2></Link>
                         </div>
                     </div>
                     <div className="header-3c header-3-item col-4">

@@ -226,6 +226,10 @@
         top: 12px !important;
         left: 12px !important;
         color: #de1919;
+        font-size: 12px !important
+    }
+    .item-description {
+        font-size: 14px !important;
     }
     .item-money {
         flex-wrap: wrap !important;

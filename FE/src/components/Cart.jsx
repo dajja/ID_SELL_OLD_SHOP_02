@@ -95,7 +95,7 @@ function Cart() {
                     <div className='cart-content-infor col-10'>
                         <div className='cart-content-1 col-10'>
                             <i class="fa-solid fa-chevron-left"></i>
-                            <Link to="/catalog" >Continue shopping</Link>
+                            <Link to="/products" >Continue shopping</Link>
                         </div>
                         <div className='cart-content-2 col-10'>
                             <table className='cart-table col-10'>
