@@ -1,26 +1,83 @@
 import '../sass/detail.scss';
+import axios from 'axios';
 import Breadcrumb from '../componentLittle/Breadcrumb';
 import Footer from './Footer';
 import Header from './Header';
-import Item from './Item';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Detail() {
-    let products = useSelector((state) => state.products)
+    let productsMain = useSelector((state) => state.products);
+    let cart = useSelector((state) => state.cart);
     let dispatch = useDispatch();
-    let {id} = useParams();
+    let { id } = useParams();
     useEffect(() => {
-        fetch("http://localhost:8000/products")
-            .then((res) => res.json())
-            .then((data) => dispatch({type: "SAVE_PRODUCTS", payload: data}))
-            .catch((error) => console.log(error));
+        async function fetchData() {
+            try {
+                const res = await fetch("http://localhost:8000/productsMain");
+                const data = await res.json();
+                dispatch({ type: "SAVE_PRODUCTS", payload: data });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchData();
     }, [dispatch])
-    let tagData = [
-        'Sneakers', 'Running', 'Trainers', 'Outdoor and active wear'
-    ]
+    const selectedProduct = productsMain.find(item => item.id === parseInt(id));
+    const randomSo = Math.floor(Math.random() * 1000000);
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    let randomChu = '';
+    for (let i = 0; i < 2; i++) {
+        randomChu += alphabet.charAt(Math.floor(Math.random() * alphabet.length)).toUpperCase()
+    }
+    let ref = `${randomSo}${randomChu}`;
+    selectedProduct && selectedProduct.detail && (selectedProduct.detail.href = ref);
+    const addToCart = (selectedProduct) => {
+        let findIndexCart = cart.findIndex((e, i) => e.id === selectedProduct.id)
+        console.log(findIndexCart);
+        if (findIndexCart === -1) {
+            axios.post("http://localhost:8000/cart", {
+                id: selectedProduct.id,
+                name: selectedProduct.name,
+                image: selectedProduct.image,
+                price: selectedProduct.price,
+                number: 1
+            })
+                .then(res => {
+                    dispatch({
+                        type: "ADD_TO_CART", paycak: selectedProduct
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            axios.put(`http://localhost:8000/cart/${cart[findIndexCart].id}`,
+                {
+                    id: cart[findIndexCart].id,
+                    name: cart[findIndexCart].name,
+                    image: cart[findIndexCart].image,
+                    price: cart[findIndexCart].price,
+                    number: cart[findIndexCart].number + 1
+                })
+                .then(res => {
+                    dispatch({
+                        type: "EDIT_TO_CART", paycak: selectedProduct
+                    })
+                })
+                .catch(err => {
+                    alert(err)
+                })
+        }
+    }
+    useEffect(() => {
+        fetch("http://localhost:8000/cart")
+            .then((res) => res.json())
+            .then((data) => dispatch({ type: "SAVE_CART", payload: data }))
+            .catch((err) => console.log(err));
+    }, [dispatch])
     let listItem = [
         {
             img: <img src="./image/giay.webp" alt="" />,
@@ -53,39 +110,34 @@ function Detail() {
                     <div className='detail-product-1 col-10'>
                         <div className='detail-product-image col-10'>
                             <div className='dt-product-image'>
-                                <div className='dt-item-img'>
-                                    <img src='./image/detail1.jpg' alt="" />
-                                </div>
-                                <div className='dt-item-img'>
-                                    <img src='./image/detail2.jpg' alt="" />
-                                </div>
-                                <div className='dt-item-img'>
-                                    <img src='./image/detail3.jpg' alt="" />
-                                </div>
-                                <div className='dt-item-img'>
-                                    <img src='./image/detail4.jpg' alt="" />
-                                </div>
+                                {selectedProduct?.detail?.img.map((item, i) => {
+                                    return (
+                                        <div className='dt-item-img' key={i}>
+                                            <img src={item} alt="" />
+                                        </div>
+                                    )
+                                })}
                             </div>
                         </div>
                         <div className='detail-product-review col-10'>
-                            <div className='dt-item-ref'>Ref: adadadadda</div>
-                            <div className='dt-item-name'>Fashion axe vegan single-origin cotton keffiyeh shoe </div>
+                            <div className='dt-item-ref'>Ref: {selectedProduct?.detail?.href}</div>
+                            <div className='dt-item-name'>{selectedProduct?.name}</div>
                             <div className="dt-item-money">
-                                <div className="dt-item-price">$26,40</div>
-                                <div className="dt-item-sale">$20</div>
+                                <div className="dt-item-price">${selectedProduct?.price}</div>
+                                <div className="dt-item-sale"></div>
                             </div>
-                            <div className='dt-item-description'>Men's black technical lace-up sneakers in contrasting materials with a contrasting cotton-tab at the heel</div>
+                            <div className='dt-item-description'>{selectedProduct?.detail?.content}</div>
                             <div className='dt-item-help'>
                                 <div><a href="/">Product details</a></div>
                                 <div><a href="/">Size guide</a></div>
                             </div>
                             <div className='dt-item-select'>
-                                <select name="filter" className="select-size">
-                                    <option value={0} selected="selected">Choose your size</option>
+                                <select name="filter" className="select-size" defaultValue="">
+                                    <option value="">Choose your size</option>
                                 </select>
                             </div>
                             <div className='dt-btn-cart'>
-                                <a href="/" >Add to cart</a>
+                                <button onClick={() => addToCart(selectedProduct)}>Add to cart</button>
                             </div>
                         </div>
                     </div>
@@ -95,18 +147,20 @@ function Detail() {
                                 <div>
                                     <h3>Product details</h3>
                                 </div>
-                                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos porro delectus mollitia voluptatum impedit nesciunt, omnis inventore non voluptatem, ea ad amet, nostrum fugit quis cumque pariatur iste iure? Recusandae!</div>
+                                <div>{selectedProduct?.detail?.description?.infor1}</div>
                                 <div>
                                     <ul>
-                                        <li>Green juice flexitarian jean shorts</li>
-                                        <li>Stumptown mumblecore asymmetrical ugh</li>
-                                        <li>Fashion axe vegan signon </li>
+                                        {selectedProduct?.detail?.description?.list.map((item, i) => {
+                                            return (
+                                                <li key={i}>{item}</li>
+                                            )
+                                        })}
                                     </ul>
                                 </div>
                                 <div className="tag col-10">
-                                    {tagData.map((item, i) => {
+                                    {selectedProduct?.detail?.tag.map((item, i) => {
                                         return (
-                                            <div className="tag-item">{item}</div>
+                                            <div className="tag-item" key={i}>{item}</div>
                                         )
                                     })}
                                 </div>
@@ -117,12 +171,14 @@ function Detail() {
                                 </div>
                                 <div>
                                     <ul>
-                                        <li>Green juice flexitarian jean shorts</li>
-                                        <li>Stumptown mumblecore asymmetrical ugh</li>
-                                        <li>Fashion axe vegan signon </li>
+                                        {selectedProduct?.detail?.description?.list.map((item, i) => {
+                                            return (
+                                                <li key={i}>{item}</li>
+                                            )
+                                        })}
                                     </ul>
                                 </div>
-                                <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas labore cupiditate, necessitatibus natus doloribus, eligendi saepe ipsam, quo fugit pariatur voluptatem iusto ad illo in voluptatum iure? Similique, cumque delectus?</div>
+                                <div>{selectedProduct?.detail?.description?.infor2}</div>
                                 <div className='dt-item-help'>
                                     <div><a href="/">Delivery</a></div>
                                     <div><a href="/">Return</a></div>

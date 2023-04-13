@@ -6,14 +6,16 @@
         display: flex;
         .detail-product-image {
             width: 70%;
-            margin-right: 20px;
+            margin-right: 25px;
             .dt-product-image {
                 display: grid;
                 grid-template-columns: auto auto;
-                gap: 10px;
+                gap: 20px;
                 .dt-item-img {
+                    height: 500px;
                     img {
                         width: 100%;
+                        height: 100%;
                     }
                 }
             }
@@ -63,14 +65,14 @@
             }
             .dt-btn-cart {
                 padding: 15px 0;
-                a {
-                    padding: 7px 0;
+                button {
+                    padding: 15px 0;
                     background-color: black;
                     display: flex;
                     width: 100%;
                     justify-content: center;
                     color: white;
-                    text-decoration: none;
+                    cursor: pointer;
                 }
             }
         }
@@ -91,6 +93,9 @@
                 ul {
                     margin-left: 20px;
                     margin-top: 25px;
+                }
+                .tag {
+                    justify-content: flex-start;
                 }
             }
             .dt-product-information {

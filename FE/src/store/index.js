@@ -7,7 +7,6 @@ let initialState = {
     cart: [],
 }
 const productReducer = (state = initialState, action) => {
-    console.log(action)
     if (action.type === "SAVE_PRODUCTS") {
         return {
             ...state,
@@ -131,13 +130,20 @@ const productReducer = (state = initialState, action) => {
                 productFilter: state.products.filter(item => item.type === payload),
             }
         } else if (payload === "all") {
-            console.log(payload);
             return {
                 ...state,
                 productFilter: [],
             }
         }
         return state;
+    }
+    if (action.type === "RESET_FS") {
+        let { products } = state;
+        return {
+            ...state,
+            productFilter: [],
+            productSort: [...products],
+        }
     }
     return state;
 };

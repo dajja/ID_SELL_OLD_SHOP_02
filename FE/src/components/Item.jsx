@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-
 function Item(props) {
     const { element } = props;
     let cart = useSelector((state) => state.cart)
@@ -65,7 +64,7 @@ function Item(props) {
                 <div className="item-money">
                     <div className="item-price">${element.price}</div>
                     <div className="item-sale"></div>
-                    <Link to={`/product/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
+                    <Link to={`/products/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
                     <div className='item-btn'><button onClick={() => handleClick(element)}>Add to cart</button></div>
                 </div>
             </div>

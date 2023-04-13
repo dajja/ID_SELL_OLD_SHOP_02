@@ -36,7 +36,7 @@ function Sidebar({ showBar, active }) {
                                     <i className="fa-solid fa-chevron-right actived"></i>
                                 <ul>
                                     <li className='li-actived'> <Link to={'/about'}>About</Link></li>
-                                    <li className='li-actived'> <Link to={'/catalog'}>Our Products</Link></li>
+                                    <li className='li-actived'> <Link to={'/products'}>Our Products</Link></li>
                                     <li className='li-actived'> <Link to={'/login'}>Login</Link></li>
                                 </ul>
                                 </>

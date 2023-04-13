@@ -21,9 +21,11 @@ function Catalog() {
     let productsMain = useSelector((state) => state.products);
     let productFilter = useSelector((state) => state.productFilter);
     let productSort = useSelector((state) => state.productSort);
-    const [currentPageData, setCurrentPageData] = useState(productsMain);
+    let productPresent = productFilter.length > 0 ? productFilter : productsMain;
+    console.log(productPresent);
+    const [currentPageData, setCurrentPageData] = useState(productPresent);
     let sortProduct = (event) => {
-        console.log(event.target.value)
+        setCurrentPageData(productPresent);
         if (event.target.value === "name_asc") {
             dispatch({ type: "SORT_NAME_ASC" })
         } else if (event.target.value === "name_desc") {
@@ -33,13 +35,13 @@ function Catalog() {
         } else if (event.target.value === "price_desc") {
             dispatch({ type: "SORT_PRICE_DESC" })
         }
-
     }
     let filterProduct = (event) => {
+        setCurrentPageData(productPresent);
         dispatch({ type: "FILTER_PRODUCT", payload: event.target.value });
     }
     useEffect(() => {
-        setCurrentPageData(productSort);
+        setCurrentPageData(productPresent);
     }, [])
     return (
         <>
@@ -78,7 +80,7 @@ function Catalog() {
                     </div>
                 </div>
                 <div className="catalog-btn">
-                    : <SweetPagination
+                    <SweetPagination
                         currentPageData={setCurrentPageData}
                         getData={productsMain}
                         dataPerPage={12}
