@@ -4,11 +4,19 @@ import Breadcrumb from '../componentLittle/Breadcrumb';
 import Footer from './Footer';
 import Header from './Header';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from "swiper";
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 function Detail() {
+    const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
     let productsMain = useSelector((state) => state.products);
     let cart = useSelector((state) => state.cart);
     let dispatch = useDispatch();
@@ -24,6 +32,12 @@ function Detail() {
             }
         }
         fetchData();
+    }, [dispatch])
+    useEffect(() => {
+        fetch("http://localhost:8000/cart")
+            .then((res) => res.json())
+            .then((data) => dispatch({ type: "SAVE_CART", payload: data }))
+            .catch((err) => console.log(err));
     }, [dispatch])
     const selectedProduct = productsMain.find(item => item.id === parseInt(id));
     const randomSo = Math.floor(Math.random() * 1000000);
@@ -72,35 +86,30 @@ function Detail() {
                 })
         }
     }
-    useEffect(() => {
-        fetch("http://localhost:8000/cart")
-            .then((res) => res.json())
-            .then((data) => dispatch({ type: "SAVE_CART", payload: data }))
-            .catch((err) => console.log(err));
-    }, [dispatch])
-    let listItem = [
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-        {
-            img: <img src="./image/giay.webp" alt="" />,
-            bonus: 'Free shipping',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iusto porro minus tempora ducimus sapiente nobis velit placeat explicabo, magnam sint odio alias minima error rerum libero doloribus itaque.',
-            price: 26,
-            sale: 20,
-        },
-    ]
+    function slider() {
+        return (
+            <Swiper slidesPerView={1}
+                loop={true}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Pagination]}
+                className="mySwiper">
+                {selectedProduct?.detail?.img.map((item, i) => {
+                    return (
+                        <SwiperSlide key={item.id}><img src={item} alt="" /></SwiperSlide>
+                    )
+                })}
+            </Swiper>
+        )
+    }
+    // random product
+    const productClone = productsMain.slice();
+    productClone.splice(productsMain.indexOf(selectedProduct), 1);
+    const n = 7;
+    const shuffledProduct = productClone.sort(() => 0.5 - Math.random());
+    const lastRandomProduct = shuffledProduct.slice(0, n);
+    console.log(lastRandomProduct);
     return (
         <>
             <div className='detail-container'>
@@ -110,13 +119,19 @@ function Detail() {
                     <div className='detail-product-1 col-10'>
                         <div className='detail-product-image col-10'>
                             <div className='dt-product-image'>
-                                {selectedProduct?.detail?.img.map((item, i) => {
-                                    return (
-                                        <div className='dt-item-img' key={i}>
-                                            <img src={item} alt="" />
-                                        </div>
+                                {isMobile ? slider()
+                                    : (
+                                        <>
+                                            {selectedProduct?.detail?.img.map((item, i) => {
+                                                return (
+                                                    <div className='dt-item-img' key={i}>
+                                                        <img src={item} alt="" />
+                                                    </div>
+                                                )
+                                            })}
+                                        </>
                                     )
-                                })}
+                                }
                             </div>
                         </div>
                         <div className='detail-product-review col-10'>
@@ -160,7 +175,7 @@ function Detail() {
                                 <div className="tag col-10">
                                     {selectedProduct?.detail?.tag.map((item, i) => {
                                         return (
-                                            <div className="tag-item" key={i}>{item}</div>
+                                            <div className="tag-item" key={item}>{item}</div>
                                         )
                                     })}
                                 </div>
@@ -189,14 +204,61 @@ function Detail() {
                     </div>
                     <div className='detail-divide'></div>
                     <div className='related-product'>
-                        <div className='related-arrow1 col-1'><i class="fa-solid fa-chevron-left"></i></div>
                         <div className='related-listItem col-10'>
-                            {/* {products.length > 0 && products.map((item, i) => (
-                                <Item key={i} element={item}/>
-                            ))} */}
-                            <div>product : {id}</div>
+                            {isMobile ? <Swiper slidesPerView={2}
+                                loop={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                navigation={true}
+                                modules={[Pagination, Navigation]}
+                                className="mySwiper">
+                                {lastRandomProduct.map((item, i) => {
+                                    return (
+                                        <>
+                                            <SwiperSlide key={item.id} className="item">
+                                                <div className="item-img">
+                                                    <img src={item.image} alt={item.name} />
+                                                </div>
+                                                <div className="item-bonus">{item.bonus}</div>
+                                                <Link to={`/products/${item.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}><div className="item-description">{item.name}</div></Link>
+                                                <div className="item-money">
+                                                    <div className="item-price">${item.price}</div>
+                                                </div>
+                                            </SwiperSlide>
+                                        </>
+                                    )
+                                })}
+                            </Swiper> : <Swiper slidesPerView={3}
+                                loop={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                navigation={true}
+                                modules={[Pagination, Navigation, Autoplay]}
+                                className="mySwiper">
+                                {lastRandomProduct.map((item, i) => {
+                                    return (
+                                        <>
+                                            <SwiperSlide key={item.id} className="item">
+                                                <div className="item-img">
+                                                    <img src={item.image} alt={item.name} />
+                                                </div>
+                                                <div className="item-bonus">{item.bonus}</div>
+                                                <Link to={`/products/${item.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}><div className="item-description">{item.name}</div></Link>
+                                                <div className="item-money">
+                                                    <div className="item-price">${item.price}</div>
+                                                </div>
+                                            </SwiperSlide>
+                                        </>
+                                    )
+                                })}
+                            </Swiper>}
                         </div>
-                        <div className='related-arrow2 col-1'><i class="fa-solid fa-chevron-right"></i></div>
                     </div>
                 </div>
                 <Footer />
