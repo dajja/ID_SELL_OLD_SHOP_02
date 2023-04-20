@@ -9,7 +9,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function Checkout() {
-    let cart = useSelector((state) => state.cart)
+    let cart = useSelector((state) => state.products.cart)
     let totalAmount = cart.reduce((total,currentValue) => {
         return total + currentValue.price* currentValue.number;
     }, 0)
@@ -26,7 +26,7 @@ function Checkout() {
                                 {cart.map((item, i) => {
                                     return (
                                         <>
-                                            <div className="item" key={i}>
+                                            <div className="item" key={item.id}>
                                                 <div className="item-img">
                                                     <img src={item.image} alt={item.name} />
                                                 </div>

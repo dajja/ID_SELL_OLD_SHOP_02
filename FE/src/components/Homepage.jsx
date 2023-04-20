@@ -8,7 +8,7 @@ import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Homepage() {
-    let products = useSelector((state) => state.products);
+    let products = useSelector((state) => state.products.products);
     let dispatch = useDispatch();
     useEffect(() => {
         fetch("http://localhost:8000/products")

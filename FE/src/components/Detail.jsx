@@ -234,6 +234,7 @@ function Detail() {
                                 pagination={{
                                     clickable: true,
                                 }}
+                                spaceBetween={10}
                                 autoplay={{
                                     delay: 2500,
                                     disableOnInteraction: false,

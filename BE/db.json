@@ -690,5 +690,23 @@
       }
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 2,
+      "name": "giay ",
+      "image": "/image/giay.webp",
+      "price": 28,
+      "number": 1
+    },
+    {
+      "id": 6,
+      "name": "giay 6",
+      "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025248/cld-sample-5.jpg",
+      "price": 18,
+      "number": 1
+    }
+  ],
+  "users": [
+    
+  ]
 }

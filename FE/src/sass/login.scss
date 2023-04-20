@@ -45,7 +45,7 @@
                     }
                     .form-input {
                         line-height: 30px;
-                        input[type=text] {
+                        input[type=text], input[type=email] {
                             padding: 6px 10px;
                             border-radius: 5px;
                         }
@@ -56,10 +56,6 @@
                             width: 100%;
                             border-radius: 5px;
                             cursor: pointer;
-                            a {
-                                text-decoration: none;
-                                color: white;
-                            }
                         }
                         .right-item-link {
                             text-align: center;

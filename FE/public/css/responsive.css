@@ -237,12 +237,13 @@
     .register-content-left {
         height: 50% !important;
         order: 2 !important;
+        padding-top: 50px !important;
     }
 
     .register-content-right {
         order: 1 !important;
         background-color: white !important;
-        height: 600px !important;
+        height: max-content !important;
     }
 
     .register-content-left-item {
@@ -252,9 +253,11 @@
     .register-content-right-item {
         padding-top: 40px !important;
     }
-
-    .register-content .fa-eye {
-        margin-top: 18px !important;
+    .register-content-right-item form {
+        width: 240px !important;
+    }
+    .register-content-right-item .fa-eye {
+        margin-top: 9px !important;
     }
 
     /* Register */
@@ -336,10 +339,6 @@
 
     .related-listItem {
         margin: 0 !important;
-    }
-
-    .related-listItem .item {
-        padding: 0 0 0 0 !important;
     }
 
     .related-listItem .item .item-money {
