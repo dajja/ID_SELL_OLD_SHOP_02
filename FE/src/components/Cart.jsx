@@ -14,7 +14,7 @@ const accuracy = (e) => {
 };
 
 function Cart() {
-    let cart = useSelector((state) => state.cart);
+    let cart = useSelector((state) => state.products.cart);
     let dispatch = useDispatch();
     let totalAmount = cart.reduce((total, currentValue) => {
         return total + currentValue.price * currentValue.number;

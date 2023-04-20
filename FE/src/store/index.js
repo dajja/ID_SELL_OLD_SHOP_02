@@ -1,10 +1,14 @@
-import { combineReducers, legacy_createStore as createStore } from 'redux';
+import { combineReducers, legacy_createStore as createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 let initialState = {
     products: [],
     productFilter: [],
     productSort: [],
     cart: [],
+}
+let initialStateUser = {
+    users: []
 }
 const productReducer = (state = initialState, action) => {
     if (action.type === "SAVE_PRODUCTS") {
@@ -147,16 +151,41 @@ const productReducer = (state = initialState, action) => {
     }
     return state;
 };
-// const userReducer = () => {
-//     return {
-//         users: [],
-//     }
-// }
-// const reducers = combineReducers({
-//     products: productReducer,
-//     users: userReducer,
-// })
+const userReducer = (state = initialStateUser, action) => {
+    if (action.type === "REGISTER_USER_REQUEST") {
+        console.log(action);
+        return {
+            ...state,
+        }
+    }
+    if (action.type === "REGISTER_USER_SUCCESS") {
+        const { payload } = action;
+        const { users } = state;
+        console.log(action);
+        console.log(users);
+        let findIndex = users.findIndex((e, i) => e.id = payload.id);
+        if (findIndex === -1) {
+            users.push({id: payload.id, email: payload.email, username: payload.username , password: payload.password});
+        }
+        return {
+            ...state,
+            users: [...users]
+        }
+    }
+    if (action.type === "REGISTER_USER_ERROR") {
+        console.log(action);
+        return {
+            ...state,
+        }
+    }
+    return state;
+}
+const rootReducer = combineReducers({
+    products: productReducer,
+    users: userReducer
+})
 const store = createStore(
-    productReducer,
+    rootReducer,
+    applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store;

@@ -18,9 +18,9 @@ function Catalog() {
             .then((data) => dispatch({ type: "SAVE_PRODUCTS", payload: data }))
             .catch((err) => console.log(err));
     }, [dispatch])
-    let productsMain = useSelector((state) => state.products);
-    let productFilter = useSelector((state) => state.productFilter);
-    let productSort = useSelector((state) => state.productSort);
+    let productsMain = useSelector((state) => state.products.products);
+    let productFilter = useSelector((state) => state.products.productFilter);
+    let productSort = useSelector((state) => state.products.productSort);
     let productPresent = productFilter.length > 0 ? productFilter : productsMain;
     console.log(productPresent);
     const [currentPageData, setCurrentPageData] = useState(productPresent);

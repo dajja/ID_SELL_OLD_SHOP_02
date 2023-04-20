@@ -7,7 +7,7 @@
         flex-wrap: wrap;
         .register-content-left {
             width: 55%;
-            height: 735px;
+            height: 800px;
             .register-content-left-item{
                 padding-top: 50px;
                 img {
@@ -25,7 +25,7 @@
         }
         .register-content-right {
             width: 45%;
-            height: 735px;
+            height: 800px;
             background-color: rgb(224, 221, 221);
             .register-content-right-item {
                 display: flex;
@@ -38,6 +38,7 @@
                     0 2px 8px hsla(0, 0%, 0%, 0.2);
                     background-color: white;
                     border-radius: 5px;
+                    width: 210px;
                     .form-h3 {
                         font-family: 'Roboto', sans-serif;
                         font-size: 33px;
@@ -46,9 +47,14 @@
                     }
                     .form-input {
                         line-height: 30px;
-                        input[type=text] {
-                            padding: 6px 10px;
+                        input[type=text], input[type=password] {
+                            padding: 6px 0px;
                             border-radius: 5px;
+                            width: 100%;
+                            text-indent: 6px;
+                        }
+                        .fa-eye, .fa-eye-slash {
+                            position: relative;
                         }
                         .form-btn {
                             margin-top: 10px;
@@ -67,9 +73,14 @@
                                 color: rgb(162, 161, 161);
                             }
                         }
+                        .error{
+                            font-size: 14px;
+                            color: red;
+                        }
                     }
                 }
             }
         }
     }
 }
+

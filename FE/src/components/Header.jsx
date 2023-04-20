@@ -4,8 +4,7 @@ import Sidebar from "./Sidebar";
 import { useState, useEffect } from "react";
 export default function Header() {
     let dispatch=useDispatch()
-    let cart = useSelector((state) => state.cart);
-    
+    let cart = useSelector((state) => state.products.cart);
     const [showBar, setShowBar] = useState(false);
     let handleSidebar = () => {
         setShowBar(!showBar);
@@ -45,7 +44,6 @@ export default function Header() {
                         <div className="header-3-dola">En | USD</div>
                         <div className="header-3-itemCart">
                             <Link to={'/cart'} ><i className="fa-solid fa-cart-shopping" /> </Link>
-                            {/* {amount ? <div className="header-3-itemAmount"> {total} </div> : ""} */}
                             {cart.length>0 ? <div className="header-3-itemAmount"> {cart.length} </div> :""}
                         </div>
                     </div>

@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 import '../sass/login.scss';
-function Login() {
+import React from 'react';
+let Login = () => {
     return (
         <>
             <div className="login-container">
@@ -17,14 +19,14 @@ function Login() {
                                 <p >Welcome Back</p>
                                 <div className="form-input ">
                                     <label htmlFor="email" >Email</label> <br />
-                                    <input type="text" placeholder="Email address" name="email" tabIndex={1} /> <br />
+                                    <input type="text" placeholder="Email address" name="email"  tabIndex={1} /> <br />
                                     <label htmlFor="password" >Password</label>  <br />
-                                    <input type="text" placeholder="Password" name="password" tabIndex={1} />
+                                    <input type="text" placeholder="Password" name="password" tabIndex={1} /> 
                                     <i className="fa-solid fa-eye-slash" /> <br />
-                                    <button className="form-btn"> <a href="/"> Login</a> </button>  <br />
+                                    <button className="form-btn" type="submit"> Login </button>  <br />
                                     <div className="right-item-link">
                                         <a href="/">Forgot password</a>
-                                        <p>Chưa có tài khoản ?<a href="/"> Đăng kí </a> </p>
+                                        <p>Chưa có tài khoản ?<a href="/register"> Đăng kí </a> </p>
                                     </div>
                                 </div>
                                 <div className="right-item-otherlink">
@@ -44,5 +46,4 @@ function Login() {
         </>
     )
 }
-
 export default Login;

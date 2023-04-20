@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function Item(props) {
     const { element } = props;
-    let cart = useSelector((state) => state.cart)
+    let cart = useSelector((state) => state.products.cart);
     let dispatch = useDispatch();
     useEffect(() => {
         fetch("http://localhost:8000/cart")
