@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 
 function Detail() {
     const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
-    let productsMain = useSelector((state) => state.products);
+    let productsMain = useSelector((state) => state.products.products);
     let cart = useSelector((state) => state.cart);
     let dispatch = useDispatch();
     let { id } = useParams();
@@ -210,8 +210,8 @@ function Detail() {
                                 pagination={{
                                     clickable: true,
                                 }}
-                                navigation={true}
-                                modules={[Pagination, Navigation]}
+                                spaceBetween={15}
+                                modules={[Pagination]}
                                 className="mySwiper">
                                 {lastRandomProduct.map((item, i) => {
                                     return (

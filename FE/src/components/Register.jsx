@@ -1,11 +1,12 @@
 import '../sass/register.scss';
-import React, { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
 function Register() {
+    const registerList = useSelector(state => state.users.registedUsers);
     const dispatch = useDispatch();
     const {
         register,
@@ -27,6 +28,11 @@ function Register() {
             pattern: {
                 value: /^\S+@\S+\.\S+$/,
                 message: "⚠ Wrong format"
+            },
+            validate: (val) => {
+                if (registerList.find(e => e.email === val)) {
+                    return "⚠ Email already exist"
+                }
             }
         },
         firstname: {
@@ -87,10 +93,10 @@ function Register() {
             var hashPassword = bcrypt.hashSync(data.password, salt);
             dispatch({ type: "REGISTER_USER_REQUEST" });
             try {
-                const res = await axios.post("http://localhost:8000/users", {
+                const res = await axios.post("http://localhost:8000/registerUsers", {
                     id: data.id,
                     email: data.email,
-                    username: data.firstname + '' + data.lastname,
+                    username: data.firstname + " " + data.lastname,
                     password: hashPassword,
                 });
                 dispatch({ type: "REGISTER_USER_SUCCESS", payload: res });
@@ -105,6 +111,11 @@ function Register() {
             }
         }
     }
+    useEffect(() => {
+        axios.get("http://localhost:8000/registerUsers")
+        .then((data) => dispatch({type: "SAVE_USERS", payload: data.data}))
+        .catch((err) => console.log(err));
+    }, [dispatch])
     return (
         <>
             <div className="register-container">

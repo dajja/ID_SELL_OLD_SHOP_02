@@ -8,7 +8,9 @@ let initialState = {
     cart: [],
 }
 let initialStateUser = {
-    users: []
+    registedUsers: [],
+    loggedInUser: {},
+    token: null
 }
 const productReducer = (state = initialState, action) => {
     if (action.type === "SAVE_PRODUCTS") {
@@ -152,6 +154,18 @@ const productReducer = (state = initialState, action) => {
     return state;
 };
 const userReducer = (state = initialStateUser, action) => {
+    if (action.type === "SAVE_USERS") {
+        let { payload } = action;
+        return {
+            ...state,
+            registedUsers: [...payload],
+        }
+    }
+    if (action.type === "SAVE_TOKEN") {
+        return {
+            ...state,
+        }
+    }
     if (action.type === "REGISTER_USER_REQUEST") {
         console.log(action);
         return {
@@ -160,19 +174,38 @@ const userReducer = (state = initialStateUser, action) => {
     }
     if (action.type === "REGISTER_USER_SUCCESS") {
         const { payload } = action;
-        const { users } = state;
+        const { registedUsers } = state;
         console.log(action);
-        console.log(users);
-        let findIndex = users.findIndex((e, i) => e.id = payload.id);
+        let findIndex = registedUsers.findIndex((e, i) => e.id = payload.id);
         if (findIndex === -1) {
-            users.push({id: payload.id, email: payload.email, username: payload.username , password: payload.password});
+            registedUsers.push({ id: payload.id, email: payload.email, username: payload.username, password: payload.password });
         }
         return {
             ...state,
-            users: [...users]
+            registedUsers: [...registedUsers]
         }
     }
     if (action.type === "REGISTER_USER_ERROR") {
+        console.log(action);
+        return {
+            ...state,
+        }
+    }
+    if (action.type === "LOGIN_USER_REQUEST") {
+        console.log(action);
+        return {
+            ...state,
+        }
+    }
+    if (action.type === "LOGIN_USER_SUCCESS") {
+        console.log(action);
+        const { payload } = action;
+        return {
+            ...state,
+            loggedInUser: payload,
+        }
+    }
+    if (action.type === "LOGIN_USER_ERROR") {
         console.log(action);
         return {
             ...state,

@@ -38,6 +38,7 @@
                     0 2px 8px hsla(0, 0%, 0%, 0.2);
                     background-color: white;
                     border-radius: 5px;
+                    width: 200px;
                     .form-h3 {
                         font-family: 'Roboto', sans-serif;
                         font-size: 24px;
@@ -45,9 +46,14 @@
                     }
                     .form-input {
                         line-height: 30px;
-                        input[type=text], input[type=email] {
-                            padding: 6px 10px;
+                        input[type=text], input[type=password] {
+                            width: 100%;
                             border-radius: 5px;
+                            padding: 6px 0;
+                            text-indent: 6px;
+                        }
+                        .fa-eye, .fa-eye-slash {
+                            position: relative;
                         }
                         .form-btn {
                             margin-top: 10px;
@@ -70,6 +76,10 @@
                                     color: rgb(162, 161, 161);
                                 }
                             }
+                        }
+                        .error{
+                            font-size: 13px;
+                            color: red;
                         }
                     }
                     .right-item-otherlink {
@@ -105,8 +115,8 @@
 }
 
 .fa-eye, .fa-eye-slash {
+    cursor: pointer;
     position: absolute;
     margin-left: -25px;
-    margin-top: 8px;
     font-size: 16px;
 }
