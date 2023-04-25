@@ -213,6 +213,7 @@
 
     /* login */
     .login-content-left {
+        margin-top: 50px;
         height: 50% !important;
         order: 2 !important;
     }
@@ -220,7 +221,7 @@
     .login-content-right {
         order: 1 !important;
         background-color: white !important;
-        height: 600px !important;
+        height: max-content !important;
     }
 
     .login-content-left-item {
@@ -253,9 +254,11 @@
     .register-content-right-item {
         padding-top: 40px !important;
     }
+
     .register-content-right-item form {
         width: 240px !important;
     }
+
     .register-content-right-item .fa-eye {
         margin-top: 9px !important;
     }

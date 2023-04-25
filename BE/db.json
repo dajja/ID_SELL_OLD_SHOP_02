@@ -690,23 +690,28 @@
       }
     }
   ],
-  "cart": [
+  "cart": [],
+  "registerUsers": [
     {
-      "id": 2,
-      "name": "giay ",
-      "image": "/image/giay.webp",
-      "price": 28,
-      "number": 1
+      "email": "buiminh8690@gmail.com",
+      "username": "minhthao",
+      "password": "$2a$10$DUGwOPcjVcS/RW7iKMRrv.34oBm/ZaOKnReoSeNuR5iH61Me99q7C",
+      "id": 1
     },
     {
-      "id": 6,
-      "name": "giay 6",
-      "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025248/cld-sample-5.jpg",
-      "price": 18,
-      "number": 1
+      "email": "buiminh86900@gmail.com",
+      "username": "adadada adada",
+      "password": "$2a$10$0S2HUd5R6U4rM8UonJnVMOgrJ6Ue9.WVw3/5hvLlGYw2EG3gkHjE6",
+      "id": 2
+    },
+    {
+      "email": "adada@gm.c",
+      "username": "adada dada",
+      "password": "$2a$10$/OC80u6XSVFN31OQU2q9CeLtNCf0aI4gvA0AmVjpTuB..wPLCRhh6",
+      "id": 3
     }
   ],
-  "users": [
-    
-  ]
+  "loginUser": {
+
+  }
 }
