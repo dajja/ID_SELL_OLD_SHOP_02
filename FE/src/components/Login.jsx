@@ -1,11 +1,12 @@
 import '../sass/login.scss';
+import setAuthToken from '../store/actions/setAuthorizationToken';
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import { Link, useNavigate } from 'react-router-dom';
-import jwt_decode from "jwt-decode";
+import Cookies from "js-cookie";
 
 function Login() {
     let navigate = useNavigate();
@@ -14,12 +15,13 @@ function Login() {
     useEffect(() => {
         axios.get("http://localhost:8000/registerUsers")
             .then(res => dispatch({ type: "SAVE_USERS", payload: res.data }))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));    
     }, [])
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors }
     } = useForm();
     const FormSubmit = (data) => {
@@ -52,19 +54,28 @@ function Login() {
         }
     }
     const loginUser = (data) => {
+        // Cookies.set('name', JSON.stringify(data));
+        // console.log(JSON.stringify(data).split('').reverse().toString());
+        // console.log(Cookies.get("name"));
         return async (dispatch, getState) => {
             dispatch({ type: "LOGIN_USER_REQUEST" });
             try {
                 let authentication = authenUser(data);
+                console.log(authentication);
                 if (authentication) {
-                    const res = await axios.post("http://localhost:8000/loginUser", {
+                    await axios.post("http://localhost:8000/loginUser", {
                         email: authentication.email,
                         password: authentication.password,
                     })
-                    console.log("dang nhap thanh cong");
-                    dispatch({ type: "LOGIN_USER_SUCCESS", payload: res.data });
-                    // sessionStorage.setItem("user", authentication);
-                    navigate("/");
+                        .then(data => {
+                            dispatch({ type: "LOGIN_USER_SUCCESS", payload: data });
+                            reset();
+                            // navigate("/");
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            dispatch({ type: "LOGIN_USER_ERROR" });
+                        })
                 } else {
                     console.log("dang nhap that bai");
                     dispatch({ type: "LOGIN_USER_ERROR" });

@@ -709,9 +709,14 @@
       "username": "adada dada",
       "password": "$2a$10$/OC80u6XSVFN31OQU2q9CeLtNCf0aI4gvA0AmVjpTuB..wPLCRhh6",
       "id": 3
+    },
+    {
+      "email": "thaongu@gmail.com",
+      "username": "thao ngu",
+      "password": "$2a$10$Ucx/Q/oG2qKb9f/zBkS2B.plBI6p/F.FMX.Rzaq6yysEOMZDfzAPO",
+      "id": 4
     }
   ],
   "loginUser": {
-
   }
 }
