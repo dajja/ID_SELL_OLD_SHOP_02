@@ -1,0 +1,28 @@
+.salepage-container {
+    max-width: 100%;
+    box-sizing: border-box;
+    .sale-bar {
+        display: flex;
+        padding: 20px;
+        gap: 5%;
+        font-size: 18px;
+        .sale-bar-title {
+            padding-bottom: 15px;
+            border-bottom: 3px solid red;
+        }
+        .sale-bar-countdown {
+            display: flex;
+            gap: 25px;
+        }
+    }
+    h2 {
+        padding: 20px;
+        font-weight: 500;
+        font-size: 25px;
+    }
+    .salepage-listItem {
+        background-color: #bbb8b8;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+}

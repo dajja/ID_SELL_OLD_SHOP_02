@@ -1,5 +1,4 @@
 import '../sass/login.scss';
-import setAuthToken from '../store/actions/setAuthorizationToken';
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -11,11 +10,13 @@ import Cookies from "js-cookie";
 function Login() {
     let navigate = useNavigate();
     let dispatch = useDispatch();
-    var registedUsers = useSelector(state => state.users.registedUsers);
+    var users = useSelector(state => state.userss.users);
+    const [errorMessage, setErrorMessage] = useState('');
     useEffect(() => {
-        axios.get("http://localhost:8000/registerUsers")
+        axios.get("http://localhost:8000/users")
             .then(res => dispatch({ type: "SAVE_USERS", payload: res.data }))
-            .catch(err => console.log(err));    
+            .catch(err => console.log(err));
+        //eslint-disable-next-line
     }, [])
     const {
         register,
@@ -25,7 +26,6 @@ function Login() {
         formState: { errors }
     } = useForm();
     const FormSubmit = (data) => {
-        console.log(data);
         dispatch(loginUser(data));
     }
     const loginMessage = {
@@ -54,23 +54,40 @@ function Login() {
         }
     }
     const loginUser = (data) => {
-        // Cookies.set('name', JSON.stringify(data));
-        // console.log(JSON.stringify(data).split('').reverse().toString());
-        // console.log(Cookies.get("name"));
         return async (dispatch, getState) => {
             dispatch({ type: "LOGIN_USER_REQUEST" });
             try {
                 let authentication = authenUser(data);
-                console.log(authentication);
                 if (authentication) {
-                    await axios.post("http://localhost:8000/loginUser", {
-                        email: authentication.email,
-                        password: authentication.password,
+                    await axios.post("http://localhost:5000/login", {
+                        id: authentication.id,
+                        username: authentication.username,
+                    }, {
+                        headers: {
+                            'Authorization': "backenddaucac"
+                        }
                     })
-                        .then(data => {
-                            dispatch({ type: "LOGIN_USER_SUCCESS", payload: data });
-                            reset();
-                            // navigate("/");
+                        .then(data1 => {
+                            axios.get("http://localhost:8000/users/" + authentication.id)
+                                .then(data => {
+                                    pushToken(data);
+                                })
+                            function pushToken(data2) {
+                                data2.data.token.push(data1.data.token);
+                                axios.put("http://localhost:8000/users/" + authentication.id, data2.data, {
+                                    headers: {
+                                        'Authorization': "backenddaucac"
+                                    },
+                                })
+                                    .then((res) => {
+                                        if (res.status === 200) {
+                                            dispatch({ type: "LOGIN_USER_SUCCESS", payload: res });
+                                            localStorage.setItem("token", data1.data.token);
+                                            reset();
+                                            navigate("/");
+                                        }
+                                    })
+                            }
                         })
                         .catch(error => {
                             console.log(error);
@@ -88,13 +105,13 @@ function Login() {
         }
     }
     const authenUser = (data) => {
-        console.log(data);
-        const userEmail = registedUsers.find(e => e.email === data.email);
+        const userEmail = users.find(e => e.email === data.email);
         if (userEmail && bcrypt.compareSync(data.password, userEmail?.password)) {
             console.log("dung roi");
+            setErrorMessage("");
             return userEmail;
         } else {
-            console.log("sai roi");
+            setErrorMessage("⚠ Thông tin xác thực không chính xác");
             return null;
         }
     }
@@ -118,9 +135,10 @@ function Login() {
                                     <input type="text" placeholder="Email address" name="email" tabIndex={1} {...register("email", loginMessage.email)} /> <br />
                                     <div className='error'>{errors?.email && errors.email.message} </div>
                                     <label htmlFor="password" >Password</label>  <br />
-                                    <input type={passwordType} placeholder="Password" name="password" tabIndex={1} {...register("password", loginMessage.password)} />
+                                    <input type={passwordType} placeholder="Password" name="password" tabIndex={1} {...register("password", loginMessage.password)} autoComplete='on' />
                                     <i className="fa-solid fa-eye" onClick={handlePassword} ref={hideIcon} /> <br />
                                     <div className='error'>{errors?.password && errors.password.message} </div>
+                                    {errorMessage && <div className='error'>{errorMessage}</div>}
                                     <button className="form-btn" type="submit"> Login </button>  <br />
                                     <div className="right-item-link">
                                         <a href="/">Forgot password</a>

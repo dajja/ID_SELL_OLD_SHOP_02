@@ -1,4 +1,4 @@
-import { combineReducers, legacy_createStore as createStore, applyMiddleware } from 'redux';
+import { combineReducers, applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 let initialState = {
@@ -8,9 +8,7 @@ let initialState = {
     cart: [],
 }
 let initialStateUser = {
-    registedUsers: [],
-    loggedInUser: {},
-    token: null
+    users: [],
 }
 const productReducer = (state = initialState, action) => {
     if (action.type === "SAVE_PRODUCTS") {
@@ -158,12 +156,7 @@ const userReducer = (state = initialStateUser, action) => {
         let { payload } = action;
         return {
             ...state,
-            registedUsers: [...payload],
-        }
-    }
-    if (action.type === "SAVE_TOKEN") {
-        return {
-            ...state,
+            users: [...payload],
         }
     }
     if (action.type === "REGISTER_USER_REQUEST") {
@@ -174,15 +167,14 @@ const userReducer = (state = initialStateUser, action) => {
     }
     if (action.type === "REGISTER_USER_SUCCESS") {
         const { payload } = action;
-        const { registedUsers } = state;
-        console.log(action);
-        let findIndex = registedUsers.findIndex((e, i) => e.id = payload.id);
+        const { users } = state;
+        let findIndex = users.findIndex((e, i) => e.id = payload.id);
         if (findIndex === -1) {
-            registedUsers.push({ id: payload.id, email: payload.email, username: payload.username, password: payload.password });
+            users.push({ id: payload.id, email: payload.email, username: payload.username, password: payload.password });
         }
         return {
             ...state,
-            registedUsers: [...registedUsers]
+            users: [...users]
         }
     }
     if (action.type === "REGISTER_USER_ERROR") {
@@ -198,11 +190,10 @@ const userReducer = (state = initialStateUser, action) => {
         }
     }
     if (action.type === "LOGIN_USER_SUCCESS") {
-        console.log(action);
         const { payload } = action;
         return {
             ...state,
-            loggedInUser: payload,
+            users: payload,
         }
     }
     if (action.type === "LOGIN_USER_ERROR") {
@@ -215,10 +206,13 @@ const userReducer = (state = initialStateUser, action) => {
 }
 const rootReducer = combineReducers({
     products: productReducer,
-    users: userReducer
+    userss: userReducer
 })
-const store = createStore(
-    rootReducer,
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const middlewareEnhancer = applyMiddleware(thunk)
+
+const composeWithDevTools =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composedEnhancers = composeWithDevTools(middlewareEnhancer)
+
+const store = createStore(rootReducer, composedEnhancers)
 export default store;
