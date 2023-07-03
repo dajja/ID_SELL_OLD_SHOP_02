@@ -1,5 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import '../sass/breadcrumb.scss';
+
+function upperFirstWord(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
 function Breadcrumb() {
     const location = useLocation();
     let link = '';
@@ -10,7 +15,7 @@ function Breadcrumb() {
             return (
                 <div className='crumb' key={crumb}>
                 <i className="fa-solid fa-chevron-right" /> 
-                    <Link to={link}>{crumb}</Link>
+                    <Link to={link}>{upperFirstWord(crumb)}</Link>
                 </div>
             )
         })

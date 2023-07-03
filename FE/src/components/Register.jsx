@@ -6,7 +6,7 @@ import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
 function Register() {
-    const registerList = useSelector(state => state.users.registedUsers);
+    const userList = useSelector(state => state.userss.users);
     const dispatch = useDispatch();
     const {
         register,
@@ -30,7 +30,7 @@ function Register() {
                 message: "⚠ Wrong format"
             },
             validate: (val) => {
-                if (registerList.find(e => e.email === val)) {
+                if (userList.find(e => e.email === val)) {
                     return "⚠ Email already exist"
                 }
             }
@@ -93,11 +93,12 @@ function Register() {
             var hashPassword = bcrypt.hashSync(data.password, salt);
             dispatch({ type: "REGISTER_USER_REQUEST" });
             try {
-                const res = await axios.post("http://localhost:8000/registerUsers", {
-                    id: data.id,
+                const res = await axios.post("http://localhost:8000/users", {
+                    id: Math.floor(Math.random() * 1000000),
                     email: data.email,
                     username: data.firstname + " " + data.lastname,
                     password: hashPassword,
+                    token: []
                 });
                 dispatch({ type: "REGISTER_USER_SUCCESS", payload: res });
                 setTimeout(() => {
@@ -112,7 +113,7 @@ function Register() {
         }
     }
     useEffect(() => {
-        axios.get("http://localhost:8000/registerUsers")
+        axios.get("http://localhost:8000/users")
         .then((data) => dispatch({type: "SAVE_USERS", payload: data.data}))
         .catch((err) => console.log(err));
     }, [dispatch])

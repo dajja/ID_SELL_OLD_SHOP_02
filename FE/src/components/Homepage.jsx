@@ -4,11 +4,16 @@ import Footer from './Footer';
 import Item from './Item';
 import MasonryItem from './MasonryItem';
 
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Homepage() {
     let products = useSelector((state) => state.products.products);
+    const userInfo = localStorage.getItem("user")
+    if (userInfo) {
+        console.log(JSON.parse(localStorage.getItem("user")));
+    }
+
     let dispatch = useDispatch();
     useEffect(() => {
         fetch("http://localhost:8000/products")
@@ -90,7 +95,7 @@ function Homepage() {
                         {products.length > 0 && products.map((item, i) => (
                             <Item key={i} element={item} />
                         ))}
-                        
+
                     </div>
                 </div>
                 <div className="homepage-sale">
@@ -113,7 +118,7 @@ function Homepage() {
                                 </div>
                             </div>
                             {newsMasonry.map((item, i) => (
-                                <MasonryItem key={i} image={item.image} name={item.name} message={item.message}/>
+                                <MasonryItem key={i} image={item.image} name={item.name} message={item.message} />
                             ))}
                         </div>
                     </div>

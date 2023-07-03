@@ -1,11 +1,12 @@
 import '../sass/item.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
 function Item(props) {
     const { element } = props;
+    const location = useLocation();
     let cart = useSelector((state) => state.products.cart);
     let dispatch = useDispatch();
     useEffect(() => {
@@ -55,19 +56,35 @@ function Item(props) {
     }
     return (
         <>
-            <div key={element.id} className="item">
-                <div className="item-img">
-                    <img src={element.image} alt={element.name} />
+            {location.pathname === "/sale" || element.isSale ?
+                <div key={element.id} className="item">
+                    <div className="item-img">
+                        <img src={element.image} alt={element.name} />
+                    </div>
+                    <div className="item-bonus">{element.bonus}</div>
+                    <div className="item-description sale-page">{element.name}</div>
+                    <div className="item-money">
+                        <div className="item-price sale-page" style={{textDecoration: 'line-through'}}>${element.price}</div>
+                        <div className="item-sale sale-page">${element.sale}</div>
+                        <Link to={`/products/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
+                        <div className='item-btn'><button onClick={() => handleClick(element)}>Add to cart</button></div>
+                    </div>
                 </div>
-                <div className="item-bonus">{element.bonus}</div>
-                <div className="item-description">{element.name}</div>
-                <div className="item-money">
-                    <div className="item-price">${element.price}</div>
-                    <div className="item-sale"></div>
-                    <Link to={`/products/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
-                    <div className='item-btn'><button onClick={() => handleClick(element)}>Add to cart</button></div>
+                :
+                <div key={element.id} className="item">
+                    <div className="item-img">
+                        <img src={element.image} alt={element.name} />
+                    </div>
+                    <div className="item-bonus">{element.bonus}</div>
+                    <div className="item-description">{element.name}</div>
+                    <div className="item-money">
+                        <div className="item-price">${element.price}</div>
+                        <div className="item-sale"></div>
+                        <Link to={`/products/${element.id}`} style={{ color: '#0a95ff', textDecoration: 'none' }}>Detail</Link>
+                        <div className='item-btn'><button onClick={() => handleClick(element)}>Add to cart</button></div>
+                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

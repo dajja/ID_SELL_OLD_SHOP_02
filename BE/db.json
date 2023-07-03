@@ -6,7 +6,8 @@
       "image": "/image/giay.webp",
       "price": 25,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "image": "/image/giay.webp",
       "price": 28,
       "sale": 18,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "image": "/image/giay2.jpg",
       "price": 15,
       "sale": "",
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": false
     },
     {
       "id": 4,
@@ -30,15 +33,17 @@
       "image": "/image/giay2.jpg",
       "price": 14,
       "sale": 10,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 5,
       "name": "giay n",
       "image": "/image/giay3.jpg",
       "price": 18,
-      "sale": "",
-      "bonus": "Free shipping"
+      "sale": 30,
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025248/cld-sample-5.jpg",
       "price": 18,
       "sale": 11,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 7,
@@ -54,7 +60,8 @@
       "image": "/image/giay3.jpg",
       "price": 20,
       "sale": 18,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": true
     },
     {
       "id": 8,
@@ -62,7 +69,8 @@
       "image": "https://res.cloudinary.com/deci64mak/image/upload/v1679025222/samples/ecommerce/analog-classic.jpg",
       "price": 24,
       "sale": 20,
-      "bonus": "Free shipping"
+      "bonus": "Free shipping",
+      "isSale": false
     }
   ],
   "productsMain": [
@@ -691,32 +699,20 @@
     }
   ],
   "cart": [],
-  "registerUsers": [
+  "users": [
     {
+      "id": 453615,
       "email": "buiminh8690@gmail.com",
-      "username": "minhthao",
-      "password": "$2a$10$DUGwOPcjVcS/RW7iKMRrv.34oBm/ZaOKnReoSeNuR5iH61Me99q7C",
-      "id": 1
+      "username": "thao m",
+      "password": "$2a$10$ZrybmBrXc6BTlJD2CIuJ2.nB8Y17sRMVVt8R1aCb7/09yI.8hYm9W",
+      "token": []
     },
     {
+      "id": 70749,
       "email": "buiminh86900@gmail.com",
-      "username": "adadada adada",
-      "password": "$2a$10$0S2HUd5R6U4rM8UonJnVMOgrJ6Ue9.WVw3/5hvLlGYw2EG3gkHjE6",
-      "id": 2
-    },
-    {
-      "email": "adada@gm.c",
-      "username": "adada dada",
-      "password": "$2a$10$/OC80u6XSVFN31OQU2q9CeLtNCf0aI4gvA0AmVjpTuB..wPLCRhh6",
-      "id": 3
-    },
-    {
-      "email": "thaongu@gmail.com",
-      "username": "thao ngu",
-      "password": "$2a$10$Ucx/Q/oG2qKb9f/zBkS2B.plBI6p/F.FMX.Rzaq6yysEOMZDfzAPO",
-      "id": 4
+      "username": "kien m",
+      "password": "$2a$10$CAecn9X16gO.B3274vWy4OQiiLnWnlO9KyfIHJWr5tI0pCXlVnnJ.",
+      "token": []
     }
-  ],
-  "loginUser": {
-  }
+  ]
 }

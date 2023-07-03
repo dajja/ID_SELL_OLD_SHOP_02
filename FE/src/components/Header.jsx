@@ -30,13 +30,15 @@ export default function Header() {
                         <div>
                             {showBar ? <Sidebar active="active" showBar={handleSidebar}/> : <Sidebar /> }
                         </div>
-                        <div className="header-3a header-3-item-2">Sale</div>
+                        <div className="header-3a header-3-item-2">
+                            <Link to="/sale" className="a-header">Sale</Link>
+                        </div>
                         <div className="header-3a header-3-item-2">Men</div>
                         <div className="header-3a header-3-item-2">Woman</div>
                     </div>
                     <div className="header-3b header-3-item col-4">
                         <div>
-                            <Link to={'/'} style={{ textDecoration: 'none', color: 'black' }} onClick={() => resetPage()}><h2 style={{ fontWeight: 600 }}>MESSTO</h2></Link>
+                            <Link to={'/'} onClick={() => resetPage()} className="a-header"><h2 style={{ fontWeight: 600 }}>MESSTO</h2></Link>
                         </div>
                     </div>
                     <div className="header-3c header-3-item col-4">
